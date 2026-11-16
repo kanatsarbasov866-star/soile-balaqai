@@ -377,6 +377,58 @@ table.syl td button:hover,table.syl td button.on{background:var(--sun)}
 .pf label{font-weight:800;font-size:15px;color:var(--muted)}
 .pf input,.pf textarea{font:inherit;color:var(--ink);background:#fff;border:2.5px solid var(--ink);border-radius:14px;padding:10px 14px;width:100%}
 .pf input[type=file]{padding:8px}
+
+.k-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.k-card{display:flex;align-items:center;gap:12px;text-align:left;background:#fff;border:2.5px solid var(--ink);border-radius:16px;padding:10px 14px;font:inherit;color:var(--ink);cursor:pointer;box-shadow:4px 4px 0 var(--ink)}
+.k-card:hover{background:var(--accent-soft)}.k-cardtx{display:flex;flex-direction:column;min-width:0}.k-cardtx small{color:var(--muted)}
+.k-ring{position:relative;flex:0 0 auto}.k-ring svg{width:100%;height:100%}.k-ring span{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.05;text-align:center}
+.k-ring b{font-size:clamp(14px,1.1em,26px)}.k-ring small{font-size:11px;color:var(--muted);max-width:80%}
+.k-hero{flex-direction:row;align-items:center;gap:24px;flex-wrap:wrap}.k-hero h2{margin:0}.k-hero p{margin:4px 0}
+.k-map{border:2px solid var(--line);border-radius:16px;padding:12px 14px;background:#fff}
+.k-maphead{display:flex;align-items:center;gap:12px}.k-maphead>div{flex:1;display:flex;flex-direction:column}.k-maphead small{color:var(--muted)}
+.k-snd{width:44px;height:44px;border-radius:12px;background:var(--accent);color:#fff;display:grid;place-items:center;font:800 24px var(--display)}
+.k-x{border:0;background:transparent;color:var(--muted);font-size:18px;cursor:pointer;padding:4px 8px;border-radius:8px}.k-x:hover{background:var(--soft)}
+.sheet .k-road{list-style:none;margin:14px 0 4px;padding:0;display:grid;grid-template-columns:repeat(10,1fr);position:relative}
+.k-road:before{content:"";position:absolute;left:5%;right:5%;top:21px;height:6px;border-radius:3px;background:repeating-linear-gradient(90deg,var(--line) 0 10px,transparent 10px 16px)}
+.k-road li{position:relative;display:flex;justify-content:center}
+.k-road li.done:after,.k-road li.cur:after{content:"";position:absolute;top:21px;left:-50%;right:50%;height:6px;background:var(--accent);z-index:0}.k-road li:first-child:after{display:none}
+.k-road button{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;font:inherit;color:var(--ink);cursor:pointer;padding:0 2px}
+.k-dot{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#fff;border:3px solid var(--line);font-weight:800;font-size:16px}
+.k-road li.done .k-dot{background:var(--accent);border-color:var(--accent);color:#fff}
+.k-road li.cur .k-dot{background:var(--sun);border-color:var(--ink);font-size:24px;transform:scale(1.12);box-shadow:0 0 0 5px var(--accent-soft)}
+.k-lbl{font-size:12.5px;line-height:1.15;text-align:center;color:var(--muted);font-weight:700}.k-road li.cur .k-lbl{color:var(--ink)}
+.k-road button:focus-visible .k-dot{outline:3px solid var(--accent);outline-offset:3px}
+.k-hist{font-size:14px;margin:6px 0 0}
+.k-add{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.k-chip{cursor:pointer;font:inherit;font-weight:800}
+.k-skills{display:flex;flex-direction:column;gap:10px}
+.k-skill{display:grid;grid-template-columns:minmax(150px,240px) auto 1fr;gap:12px;align-items:center}.k-skill>span{font-weight:700}.k-skill small{color:var(--muted)}
+.k-seg{display:flex;gap:4px}.k-seg button{width:44px;height:34px;border:2px solid var(--ink);background:#fff;font:inherit;font-weight:800;color:var(--muted);cursor:pointer;border-radius:8px}
+.k-seg button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.k-noteform{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}.k-noteform .pf:first-child{width:170px}
+.sheet .k-notes{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}.k-notes li{display:flex;gap:12px;align-items:flex-start;border-left:4px solid var(--accent);padding:4px 10px;background:var(--accent-soft);border-radius:0 10px 10px 0}.k-notes li span{flex:1}
+@media (max-width:700px){.sheet .k-road{grid-template-columns:1fr;gap:6px}.k-road:before{left:23px;right:auto;top:10px;bottom:10px;width:6px;height:auto;background:repeating-linear-gradient(180deg,var(--line) 0 10px,transparent 10px 16px)}
+.k-road li{justify-content:flex-start}.k-road li.done:after,.k-road li.cur:after{display:none}.k-road button{flex-direction:row;gap:12px}.k-lbl{font-size:15px;text-align:left}.k-skill{grid-template-columns:1fr}}
+
+.pr-bar{position:relative;z-index:1;margin-top:4px}.pr-bar small{color:#fff;opacity:.9;max-width:420px;line-height:1.3}
+.pr-only{display:none}
+@media print{
+ @page{size:A4;margin:12mm}
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ body{background:#fff!important}
+ .side,.menu-btn,.pager,footer,.no-print,.timer,.breath,.stars,.msg{display:none!important}
+ main,.wrap{margin:0!important;padding:0!important;max-width:none!important;display:block!important}
+ #view{display:flex!important;flex-direction:column;gap:10px}
+ .sheet,.game{box-shadow:none!important;break-inside:avoid;border-width:1.5px!important}
+ .page-head{background:#fff!important;color:#000!important;box-shadow:none!important;border:0!important;border-bottom:2px solid #000!important;border-radius:0!important;padding:0 0 6px!important}
+ .page-head::after,.page-head .sticker,.page-head .kicker{display:none!important}.page-head .lead{color:#333!important}.page-head h1,.page-head h1 *{color:#000!important;text-shadow:none!important}
+ .pr-only{display:flex!important}.pr-head{justify-content:space-between;font-weight:700;font-size:14px;margin-bottom:4px}
+ #view button:not(.card):not(.k-road button):not(.k-seg button){box-shadow:none!important}
+ .row>.btn,.row>button.btn{display:none!important}
+ .card b,.hide-words .card b{visibility:visible!important}
+ .reveal button{background:#fff!important;border:1.5px solid #999!important}.reveal .ans{visibility:hidden!important}.reveal .ans:after{content:""}
+ .pr-nogames .game{display:none!important}
+ body.k-printing .page-head,body.k-printing .pr-head{display:none!important}
+}
 </style>
 </head>
 <body>
@@ -682,11 +734,12 @@ function voiceGame(){return game('Дауыс өлшегіш','Дыбысты т�
   g.body.append(faces,big,tank,el('div',{class:'row',style:'justify-content:center'},startBtn,hold),note);});}
 
 /* ===== Беттер ===== */
-const GROUPS=[['Таныстыру',['home','kirispe','piramida','ozim']],['Лексикалық тақырыптар',['dene','uy-zhanuarlary','zhemister','kokonister','ydystar','kiimder']],['Жыл мезгілдері',['zhaz','kuz','qys','koktem']],['Дыбыс, түс, қимыл',['tuster','dybystar','neiro']],['Ұғымдар',['antonimder','kop-az','ulken-kishi']],['Қосымшалар',['sozdik-1','sozdik-2','buyndar']],['Педагог пен ата-ана',['ata-analarga','galereya','pikirler']]];
+const GROUPS=[['Таныстыру',['home','kirispe','piramida','ozim','oqushylar']],['Лексикалық тақырыптар',['dene','uy-zhanuarlary','zhemister','kokonister','ydystar','kiimder']],['Жыл мезгілдері',['zhaz','kuz','qys','koktem']],['Дыбыс, түс, қимыл',['tuster','dybystar','neiro']],['Ұғымдар',['antonimder','kop-az','ulken-kishi']],['Қосымшалар',['sozdik-1','sozdik-2','buyndar']],['Педагог пен ата-ана',['ata-analarga','galereya','pikirler']]];
 const PAGES={
  home:{title:'Бастапқы бет',icon:'🏠'},
  kirispe:{title:'Кіріспе',icon:'📘',lead:'Бұл жинақ кімге арналған және онымен қалай жұмыс істеу керек.'},
  piramida:{title:'Вильямс және Шелленбергер пирамидасы арқылы түзету жұмыстары',short:'Вильямс және Шелленбергер пирамидасы',icon:'🔺',lead:'Сөйлеу тілі баланың сенсорлық және қимыл дамуының үстіне құрылады. Сондықтан түзету жұмысын пирамиданың табанынан бастаймыз.'},
+ oqushylar:{title:'Оқушыларым: портфолио және даму картасы',short:'Оқушыларым және даму картасы',icon:'🗺️',lead:'Әр баланың портфолиосы: дыбыстар бойынша деңгей картасы, дағдылар шкаласы және жетістіктер күнделігі.'},
  ozim:{title:'Өзім туралы',icon:'👩‍🏫',lead:'Сайт авторы туралы мәлімет.'},
  tuster:{title:'Түстер әлемі',icon:'🎨',lead:'Түстерді танимыз, атаймыз және заттарды түсіне қарай топтаймыз.'},
  dybystar:{title:'Дыбыстар бойынша тапсырмалар',icon:'🔤',lead:'Қойылған дыбысты сегіз кезеңмен бекітеміз: жеке дыбыс, ашық буын, тұйық буын, сөздің басы, ортасы, соңы, сөйлем, мәтін.'},
@@ -857,12 +910,77 @@ R.galereya=()=>[plain('Фотосуреттер',el('p',{class:'hint'},'Суре
 R.pikirler=()=>[plain('Пікірлер',el('p',{class:'hint'},'Мұнда әріптестер мен ата-аналардың өз сөзімен жазған пікірлері аты-жөнімен бірге жарияланады.'),el('div',{class:'ex-grid'},[1,2,3].map(i=>el('div',{class:'ph'},el('small',null,'Кейін толтырылады'),'Пікір мәтіні, авторының аты-жөні және лауазымы')))),
   plain('Пікір қалдыру және байланыс',ph('','Пікір жинайтын сауалнаманың сілтемесі берілген соң осы жерде «Пікір қалдыру» батырмасы тұрады.'),el('div',{class:'row'},WA(),el('b',null,'+7 777 184 0094')))];
 
+
+/* ===== Оқушыларым: портфолио және даму картасы (деректер тек осы браузерде) ===== */
+const KSTAGES=['Дайындық','Дыбыс қойылды','Ашық буын','Тұйық буын','Сөздің басы','Сөздің ортасы','Сөздің соңы','Сөйлем','Мәтін','Еркін сөйлеу'];
+const KSTAGE_HINT=['Артикуляциялық және тыныс алу жаттығулары','Дыбысты жеке, дұрыс айтады','са, со, сы…','ас, ос, ыс…','сабын, сағат…','оса, аспан…','тас, бас…','Дыбысы бар сөйлемді айтады','Мәтінді, өлеңді айтып береді','Күнделікті сөйлеуде дұрыс қолданады'];
+const KTIERS=[[0,'Бастапқы','#ff6650'],[30,'Дамып келеді','#e09a00'],[60,'Жақсы','#1c72d0'],[90,'Жоғары','#13894f']];
+const KSKILLS=[['artic','Артикуляциялық моторика'],['phon','Фонематикалық есту'],['lex','Сөздік қор'],['gram','Грамматикалық құрылым'],['coh','Байланыстырып сөйлеу'],['fine','Ұсақ моторика'],['att','Зейін және жады']];
+const KSOUNDS=['С','З','Ц','Ш','Ж','Щ','Ч','Р','Л','К','Г','Қ','Ғ'];
+let KIDS=[];try{KIDS=JSON.parse(localStorage.getItem('sb-kids')||'[]')||[];}catch(e){KIDS=[];}
+let KSEL=null;
+function saveKids(){try{localStorage.setItem('sb-kids',JSON.stringify(KIDS));return true;}catch(e){alertKid('Сақтау мүмкін болмады: браузер деректерді сақтауға рұқсат бермеді.');return false;}}
+function alertKid(t){const m=document.getElementById('kd-msg');if(m)m.textContent=t;}
+const today=()=>new Date().toISOString().slice(0,10);
+const fmtD=d=>d?d.split('-').reverse().join('.'):'';
+const kidPct=k=>{const a=(k.sounds||[]).map(x=>x.st/(KSTAGES.length-1));const b=Object.values(k.skills||{}).filter(Boolean).map(v=>(v-1)/4);const all=a.concat(b);return all.length?Math.round(all.reduce((x,y)=>x+y,0)/all.length*100):0;};
+const tierOf=p=>KTIERS.filter(t=>p>=t[0]).pop();
+function ring(p,size){const r=40,c=2*Math.PI*r,t=tierOf(p);return el('div',{class:'k-ring',style:'width:'+size+'px;height:'+size+'px',role:'img','aria-label':'Жалпы даму деңгейі: '+p+'%, '+t[1],html:`<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="${r}" fill="none" stroke="var(--soft)" stroke-width="12"/><circle cx="50" cy="50" r="${r}" fill="none" stroke="${t[2]}" stroke-width="12" stroke-linecap="round" stroke-dasharray="${c*p/100} ${c}" transform="rotate(-90 50 50)"/></svg><span><b>${p}%</b><small>${t[1]}</small></span>`});}
+function kidCard(k){const p=kidPct(k);return el('button',{type:'button',class:'k-card'+(KSEL===k.id?' on':''),onclick(){KSEL=k.id;route();}},ring(p,64),el('span',{class:'k-cardtx'},el('b',null,k.name||'Аты жазылмаған'),el('small',null,[k.age&&k.age,(k.sounds||[]).map(x=>x.s).join(', ')].filter(Boolean).join(' · ')||'Дыбыс таңдалмаған')));}
+function soundMap(k,sd){const box=el('div',{class:'k-map'});
+  const head=el('div',{class:'k-maphead'},el('span',{class:'k-snd'},sd.s),el('div',null,el('b',null,'«'+sd.s+'» дыбысы: '+(sd.st+1)+'-деңгей · '+KSTAGES[sd.st]),el('small',null,KSTAGE_HINT[sd.st])),
+    el('button',{type:'button',class:'k-x','aria-label':'«'+sd.s+'» дыбысын картадан алып тастау',onclick(){if(!confirm('«'+sd.s+'» дыбысының картасын өшіресіз бе?'))return;k.sounds=k.sounds.filter(x=>x!==sd);saveKids();route();}},'✕'));
+  const road=el('ol',{class:'k-road'},KSTAGES.map((n,i)=>el('li',{class:(i<sd.st?'done':'')+(i===sd.st?' cur':'')},
+    el('button',{type:'button','aria-pressed':String(i===sd.st),title:KSTAGE_HINT[i],onclick(){if(sd.st===i)return;sd.st=i;(sd.hist=sd.hist||[]).push({st:i,d:today()});saveKids();route();}},
+      el('span',{class:'k-dot'},i===sd.st?em('🧒'):(i<sd.st?'✓':String(i+1))),el('span',{class:'k-lbl'},n)))));
+  const h=(sd.hist||[]).slice(-4).reverse();
+  box.append(head,road,h.length?el('p',{class:'hint k-hist'},'Соңғы өзгерістер: '+h.map(x=>fmtD(x.d)+' — '+KSTAGES[x.st]).join('; ')):null);return box;}
+function skillRow(k,key,label){const v=(k.skills||{})[key]||0;return el('div',{class:'k-skill'},el('span',null,label),el('div',{class:'k-seg',role:'radiogroup','aria-label':label},[1,2,3,4,5].map(n=>el('button',{type:'button',role:'radio','aria-checked':String(v===n),class:n<=v?'on':'','aria-label':n+' деңгей',onclick(){k.skills=k.skills||{};k.skills[key]=v===n?0:n;saveKids();route();}},String(n)))),el('small',null,v?['','Өте төмен','Төмен','Орташа','Жақсы','Жоғары'][v]:'Бағаланбаған'));}
+function kidForm(k){const F=[['name','Аты (немесе бүркеншік аты)'],['age','Жасы / сыныбы'],['start','Түзету жұмысы басталған күн','date'],['concl','Логопедиялық қорытынды',1],['goal','Жұмыс мақсаты',1]];const inp={};
+  return el('form',{class:'pform',onsubmit(e){e.preventDefault();F.forEach(([f])=>k[f]=inp[f].value.trim());if(!k.name){alertKid('Баланың атын жазыңыз.');return;}saveKids();KSEL=k.id;route();}},
+    F.map(([f,l,t])=>{const i=el(t===1?'textarea':'input',{id:'kd-'+f,rows:t===1?2:null,type:t===1?null:(t||'text')});i.value=k[f]||'';inp[f]=i;return el('div',{class:'pf'},el('label',{for:'kd-'+f},l),i);}),
+    el('div',{class:'row'},el('button',{class:'btn',type:'submit'},'Сақтау')));}
+function kidPage(k){const p=kidPct(k),t=tierOf(p);const add=el('div',{class:'k-add'},el('span',{class:'hint'},'Дыбыс қосу:'),KSOUNDS.filter(s=>!(k.sounds||[]).some(x=>x.s===s)).map(s=>el('button',{type:'button',class:'chip k-chip',onclick(){(k.sounds=k.sounds||[]).push({s,st:0,hist:[{st:0,d:today()}]});saveKids();route();}},'+ '+s)));
+  const nt=el('textarea',{id:'kd-note',rows:2,placeholder:'Мысалы: «Р» дыбысын сөз басында дұрыс айтты. Үйге: «Ат шауып келеді» жаттығуы.'});const nd=el('input',{type:'date',id:'kd-nd'});nd.value=today();
+  let del=false;const delB=el('button',{type:'button',class:'btn ghost',onclick(){if(!del){del=true;delB.textContent='Өшіру үшін тағы бір рет басыңыз';return;}KIDS=KIDS.filter(x=>x!==k);KSEL=null;saveKids();route();}},'Баланы тізімнен өшіру');
+  return [el('section',{class:'sheet k-hero'},ring(p,120),el('div',null,el('h2',null,k.name),el('p',null,[k.age,k.start&&('Жұмыс басталды: '+fmtD(k.start))].filter(Boolean).join(' · ')),
+      el('p',null,el('b',null,'Жалпы деңгей: '),p+'% — '+t[1]),k.concl&&el('p',null,el('b',null,'Қорытынды: '),k.concl),k.goal&&el('p',null,el('b',null,'Мақсат: '),k.goal),
+      el('div',{class:'row no-print'},el('button',{type:'button',class:'btn',onclick(){document.body.classList.add('k-printing');setTimeout(()=>{print();document.body.classList.remove('k-printing');},50);}},'🖨 Портфолионы басып шығару'),el('button',{type:'button',class:'btn ghost',onclick(){KSEL=null;route();}},'← Барлық балалар')))),
+    plain('Дыбыстар бойынша деңгей картасы',el('p',{class:'hint no-print'},'Бала қай кезеңге жеткенін аялдаманы басып белгілеңіз. Әр өзгерістің күні өзі жазылады.'),...(k.sounds||[]).map(sd=>soundMap(k,sd)),(k.sounds||[]).length?null:el('p',{class:'hint'},'Әзірге дыбыс қосылмаған. Төменнен түзетілетін дыбысты таңдаңыз.'),add),
+    plain('Дағдылар шкаласы',el('p',{class:'hint no-print'},'1 — өте төмен, 5 — жоғары. Қайта басса, баға алынып тасталады.'),el('div',{class:'k-skills'},KSKILLS.map(([key,l])=>skillRow(k,key,l)))),
+    plain('Жетістіктер күнделігі',el('form',{class:'k-noteform no-print',onsubmit(e){e.preventDefault();const t=nt.value.trim();if(!t)return;(k.notes=k.notes||[]).unshift({d:nd.value||today(),t});saveKids();route();}},el('div',{class:'pf'},el('label',{for:'kd-nd'},'Күні'),nd),el('div',{class:'pf',style:'flex:1'},el('label',{for:'kd-note'},'Не үйренді, не қиын болды'),nt),el('button',{class:'btn',type:'submit'},'Қосу')),
+      (k.notes||[]).length?el('ul',{class:'k-notes'},k.notes.map((n,i)=>el('li',null,el('b',null,fmtD(n.d)),el('span',null,n.t),el('button',{type:'button',class:'k-x no-print','aria-label':'Жазбаны өшіру',onclick(){k.notes.splice(i,1);saveKids();route();}},'✕')))):el('p',{class:'hint'},'Әзірге жазба жоқ.')),
+    el('details',{class:'sheet no-print'},el('summary',null,el('b',null,'Баланың мәліметін өзгерту')),kidForm(k),el('div',{class:'row'},delB))];}
+R.oqushylar=()=>{const k=KIDS.find(x=>x.id===KSEL);const msg=el('p',{id:'kd-msg',class:'hint','aria-live':'polite'});
+  const fi=el('input',{type:'file',accept:'.json,application/json',hidden:true,onchange(){const f=fi.files[0];if(!f)return;f.text().then(t=>{const d=JSON.parse(t);const arr=Array.isArray(d)?d:d.kids;if(!Array.isArray(arr))throw 0;let n=0;arr.forEach(x=>{if(!x||!x.name)return;const i=KIDS.findIndex(y=>y.id===x.id);if(i>=0)KIDS[i]=x;else KIDS.push(x);n++;});saveKids();route();alertKid(n+' баланың мәліметі жүктелді.');}).catch(()=>alertKid('Файл оқылмады. «Сөйле, балақай» сақтаған .json файлын таңдаңыз.'));}});
+  const tools=el('div',{class:'row no-print'},el('button',{type:'button',class:'btn ghost',onclick(){const b=new Blob([JSON.stringify({app:'soile-balaqai',saved:today(),kids:KIDS},null,1)],{type:'application/json'});const a=el('a',{href:URL.createObjectURL(b),download:'Оқушыларым_'+today()+'.json'});document.body.append(a);a.click();a.remove();}},'💾 Файлға сақтау'),el('button',{type:'button',class:'btn ghost',onclick(){fi.click();}},'📂 Файлдан жүктеу'),fi);
+  if(k)return [...kidPage(k),msg];
+  const nk={id:'k'+Date.now().toString(36),sounds:[],skills:{},notes:[]};
+  return [plain('Балалар тізімі',el('p',{class:'hint'},'Мәліметтер тек осы құрылғыдағы осы браузерде сақталады, интернетке жіберілмейді. Басқа құрылғыға көшіру немесе сақтық көшірме үшін «Файлға сақтау» батырмасын қолданыңыз. Баланың толық аты-жөнінің орнына атын не бүркеншік атын жазуға болады.'),
+      KIDS.length?el('div',{class:'k-list'},KIDS.map(kidCard)):el('p',{class:'hint'},'Әзірге бала қосылмаған. Төмендегі форманы толтырыңыз.'),tools,msg),
+    plain('Жаңа бала қосу',el('form',{class:'pform',onsubmit(e){e.preventDefault();const n=document.getElementById('kn-name').value.trim();if(!n){alertKid('Баланың атын жазыңыз.');return;}nk.name=n;nk.age=document.getElementById('kn-age').value.trim();nk.start=today();KIDS.push(nk);if(saveKids()){KSEL=nk.id;route();}}},
+      el('div',{class:'pf'},el('label',{for:'kn-name'},'Аты (немесе бүркеншік аты)'),el('input',{id:'kn-name',type:'text',autocomplete:'off'})),el('div',{class:'pf'},el('label',{for:'kn-age'},'Жасы / сыныбы'),el('input',{id:'kn-age',type:'text',placeholder:'Мысалы: 6 жас, даярлық тобы'})),
+      el('div',{class:'row'},el('button',{class:'btn',type:'submit'},'+ Бала қосу')))),
+    plain('Деңгей картасы қалай жұмыс істейді',el('p',null,'Әр түзетілетін дыбыс 10 аялдамадан өтеді: дайындықтан бастап еркін сөйлеуге дейін. Бала жаңа кезеңге жеткенде аялдаманы басасыз, картадағы 🧒 белгісі алға жылжиды.'),el('div',{class:'chips'},KSTAGES.map((n,i)=>el('span',{class:'chip arrow'},(i+1)+'. '+n))),el('p',null,'Жалпы деңгей дыбыстар картасы мен дағдылар шкаласы бойынша есептеледі: ',KTIERS.map(t=>t[1]+' ('+t[0]+'%-дан)').join(', ')+'.'))];};
+
+
+/* ===== Басып шығару: экраннан көз шаршамас үшін тапсырманы қағазға ===== */
+const NOPRINT_BAR=['oqushylar'];
+function doPrint(withGames){document.body.classList.toggle('pr-nogames',!withGames);document.body.classList.add('pr-task');
+  const done=()=>{document.body.classList.remove('pr-task','pr-nogames');removeEventListener('afterprint',done);};addEventListener('afterprint',done);setTimeout(()=>{print();setTimeout(done,1500);},60);}
+function printBar(id){if(NOPRINT_BAR.includes(id))return null;const hasGame=()=>!!document.querySelector('#view .game');
+  const b1=el('button',{type:'button',class:'btn sun',onclick(){doPrint(false);}},'🖨 Басып шығару');
+  const b2=el('button',{type:'button',class:'btn ghost',onclick(){doPrint(true);}},'Ойындармен бірге');
+  const bar=el('div',{class:'row pr-bar no-print'},b1,b2,el('small',null,'Баланың көзі шаршамасын: тапсырманы қағазға басып, үстел басында орындатыңыз.'));
+  setTimeout(()=>{if(!hasGame())b2.remove();});return bar;}
+
 /* ===== Навигация ===== */
 const nav=document.getElementById('nav'),view=document.getElementById('view'),side=document.getElementById('side');
 GROUPS.forEach(([g,ids])=>{nav.append(el('div',{class:'nav-group'},g));ids.forEach(id=>nav.append(el('a',{href:'#'+id,'data-id':id},el('span',{class:'n'},String(ORDER.indexOf(id)+1)),el('span',null,PAGES[id].short||PAGES[id].title))));});
 function route(){let id=location.hash.slice(1);if(!PAGES[id])id='home';const P=PAGES[id],i=ORDER.indexOf(id);stepNo=0;view.innerHTML='';document.body.className='g'+GROUPS.findIndex(g=>g[1].includes(id));
   nav.querySelectorAll('a').forEach(a=>a.classList.toggle('on',a.dataset.id===id));side.classList.remove('open');
-  if(id!=='home')view.append(el('header',{class:'page-head has-sticker'},el('span',{class:'sticker emoji','aria-hidden':'true'},P.icon),el('div',{class:'kicker'},GROUPS.find(g=>g[1].includes(id))[0]+' · '+(i+1)+' / '+ORDER.length),el('h1',null,P.title),P.lead&&el('p',{class:'lead'},P.lead)));
+  if(id!=='home')view.append(el('header',{class:'page-head has-sticker'},el('span',{class:'sticker emoji','aria-hidden':'true'},P.icon),el('div',{class:'kicker'},GROUPS.find(g=>g[1].includes(id))[0]+' · '+(i+1)+' / '+ORDER.length),el('h1',null,P.title),P.lead&&el('p',{class:'lead'},P.lead),printBar(id)));
+  view.append(el('div',{class:'pr-only pr-head'},el('span',null,'Аты-жөні: ______________________'),el('span',null,'Күні: ____________'),el('span',null,'«Сөйле, балақай»')));
   view.append(...R[id]().filter(Boolean));
   view.append(el('nav',{class:'pager','aria-label':'Беттер арасында өту'},i>0?el('a',{href:'#'+ORDER[i-1]},'← '+(PAGES[ORDER[i-1]].short||PAGES[ORDER[i-1]].title)):el('span'),i<ORDER.length-1?el('a',{href:'#'+ORDER[i+1]},(PAGES[ORDER[i+1]].short||PAGES[ORDER[i+1]].title)+' →'):el('span')));
   document.querySelector('main').scrollIntoView();window.scrollTo(0,0);}
