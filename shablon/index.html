@@ -614,7 +614,7 @@ const PYRAMID=[
 /* ===== 3D артикуляциялық жаттығулар ===== */
 const SB_BASE=(window.SB_TEMPLATE?'../':'');
 // Диктор жазбалары (audio/artic/<кілт>.mp3). Жазба қосылғанда кілті осы тізімге жазылады; жоқ болса браузердің қазақша дауысы қолданылады.
-const A3_AUDIO=[];
+const A3_AUDIO=['dual','tutik','kurek','ine','kese','sanyr','sagat','atken','tosap','at','tis','sylaq','baraban','n1','n2','n3','n4','n5','praise'];
 const A3_NUM=['бір','екі','үш','төрт','бес'];
 /* Әр жаттығу: n — атауы, say — диктор мәтіні, hold — ұстап тұру ма (true) әлде қайталау ма, pose(t) — t секундтағы қалып */
 const A3_EX={
@@ -754,7 +754,7 @@ function artic3dPage(){
     (()=>{let z=0;const b=el('button',{class:'btn ghost',type:'button',onclick(){z=z?0:1;scene3&&scene3.zoom(z?1:.3);b.textContent=z?'Алыстату':'Жақындату';}},'Жақындату');return b;})()));
   const fail=el('p',{class:'hint'},'');
   a3LoadThree().then(()=>{if(!canvas.isConnected)return;try{scene3=a3Scene(canvas);scene3.setPose(A3_EX[cur].pose);}catch(e){fail.textContent='Бұл құрылғыда 3D көрініс ашылмады. Жаттығудың сипаттамасын оқып орындаңыз.';}
-    const upd=()=>{note.textContent=A3_AUDIO.length?'':A3V.kk()?'Диктор: браузердің қазақша дауысы.':'Бұл браузерде қазақша дауыс табылмады, сондықтан диктор мәтіні экранда көрсетіледі. Дауыспен тыңдау үшін сайтты Microsoft Edge браузерінде ашыңыз.';};upd();try{speechSynthesis.addEventListener('voiceschanged',upd);}catch(e){}
+    const upd=()=>{note.textContent=A3_AUDIO.length?'Диктор дауысы: Айгерім.':A3V.kk()?'Диктор: браузердің қазақша дауысы.':'Бұл браузерде қазақша дауыс табылмады, сондықтан диктор мәтіні экранда көрсетіледі. Дауыспен тыңдау үшін сайтты Microsoft Edge браузерінде ашыңыз.';};upd();try{speechSynthesis.addEventListener('voiceschanged',upd);}catch(e){}
   }).catch(()=>{fail.textContent='3D кітапханасы жүктелмеді. Интернет байланысын тексеріп, бетті жаңартыңыз.';});
   setTimeout(()=>pick3(cur));
   return [el('section',{class:'sheet a3'},el('div',{class:'a3grid'},
