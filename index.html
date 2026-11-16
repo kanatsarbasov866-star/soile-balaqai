@@ -377,58 +377,22 @@ table.syl td button:hover,table.syl td button.on{background:var(--sun)}
 .pf label{font-weight:800;font-size:15px;color:var(--muted)}
 .pf input,.pf textarea{font:inherit;color:var(--ink);background:#fff;border:2.5px solid var(--ink);border-radius:14px;padding:10px 14px;width:100%}
 .pf input[type=file]{padding:8px}
-
-.k-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
-.k-card{display:flex;align-items:center;gap:12px;text-align:left;background:#fff;border:2.5px solid var(--ink);border-radius:16px;padding:10px 14px;font:inherit;color:var(--ink);cursor:pointer;box-shadow:4px 4px 0 var(--ink)}
-.k-card:hover{background:var(--accent-soft)}.k-cardtx{display:flex;flex-direction:column;min-width:0}.k-cardtx small{color:var(--muted)}
-.k-ring{position:relative;flex:0 0 auto}.k-ring svg{width:100%;height:100%}.k-ring span{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.05;text-align:center}
-.k-ring b{font-size:clamp(14px,1.1em,26px)}.k-ring small{font-size:11px;color:var(--muted);max-width:80%}
-.k-hero{flex-direction:row;align-items:center;gap:24px;flex-wrap:wrap}.k-hero h2{margin:0}.k-hero p{margin:4px 0}
-.k-map{border:2px solid var(--line);border-radius:16px;padding:12px 14px;background:#fff}
-.k-maphead{display:flex;align-items:center;gap:12px}.k-maphead>div{flex:1;display:flex;flex-direction:column}.k-maphead small{color:var(--muted)}
-.k-snd{width:44px;height:44px;border-radius:12px;background:var(--accent);color:#fff;display:grid;place-items:center;font:800 24px var(--display)}
-.k-x{border:0;background:transparent;color:var(--muted);font-size:18px;cursor:pointer;padding:4px 8px;border-radius:8px}.k-x:hover{background:var(--soft)}
-.sheet .k-road{list-style:none;margin:14px 0 4px;padding:0;display:grid;grid-template-columns:repeat(10,1fr);position:relative}
-.k-road:before{content:"";position:absolute;left:5%;right:5%;top:21px;height:6px;border-radius:3px;background:repeating-linear-gradient(90deg,var(--line) 0 10px,transparent 10px 16px)}
-.k-road li{position:relative;display:flex;justify-content:center}
-.k-road li.done:after,.k-road li.cur:after{content:"";position:absolute;top:21px;left:-50%;right:50%;height:6px;background:var(--accent);z-index:0}.k-road li:first-child:after{display:none}
-.k-road button{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;font:inherit;color:var(--ink);cursor:pointer;padding:0 2px}
-.k-dot{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#fff;border:3px solid var(--line);font-weight:800;font-size:16px}
-.k-road li.done .k-dot{background:var(--accent);border-color:var(--accent);color:#fff}
-.k-road li.cur .k-dot{background:var(--sun);border-color:var(--ink);font-size:24px;transform:scale(1.12);box-shadow:0 0 0 5px var(--accent-soft)}
-.k-lbl{font-size:12.5px;line-height:1.15;text-align:center;color:var(--muted);font-weight:700}.k-road li.cur .k-lbl{color:var(--ink)}
-.k-road button:focus-visible .k-dot{outline:3px solid var(--accent);outline-offset:3px}
-.k-hist{font-size:14px;margin:6px 0 0}
-.k-add{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.k-chip{cursor:pointer;font:inherit;font-weight:800}
-.k-skills{display:flex;flex-direction:column;gap:10px}
-.k-skill{display:grid;grid-template-columns:minmax(150px,240px) auto 1fr;gap:12px;align-items:center}.k-skill>span{font-weight:700}.k-skill small{color:var(--muted)}
-.k-seg{display:flex;gap:4px}.k-seg button{width:44px;height:34px;border:2px solid var(--ink);background:#fff;font:inherit;font-weight:800;color:var(--muted);cursor:pointer;border-radius:8px}
-.k-seg button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
-.k-noteform{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap}.k-noteform .pf:first-child{width:170px}
-.sheet .k-notes{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}.k-notes li{display:flex;gap:12px;align-items:flex-start;border-left:4px solid var(--accent);padding:4px 10px;background:var(--accent-soft);border-radius:0 10px 10px 0}.k-notes li span{flex:1}
-@media (max-width:700px){.sheet .k-road{grid-template-columns:1fr;gap:6px}.k-road:before{left:23px;right:auto;top:10px;bottom:10px;width:6px;height:auto;background:repeating-linear-gradient(180deg,var(--line) 0 10px,transparent 10px 16px)}
-.k-road li{justify-content:flex-start}.k-road li.done:after,.k-road li.cur:after{display:none}.k-road button{flex-direction:row;gap:12px}.k-lbl{font-size:15px;text-align:left}.k-skill{grid-template-columns:1fr}}
-
-.pr-bar{position:relative;z-index:1;margin-top:4px}.pr-bar small{color:#fff;opacity:.9;max-width:420px;line-height:1.3}
-.pr-only{display:none}
-@media print{
- @page{size:A4;margin:12mm}
- *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
- body{background:#fff!important}
- .side,.menu-btn,.pager,footer,.no-print,.timer,.breath,.stars,.msg{display:none!important}
- main,.wrap{margin:0!important;padding:0!important;max-width:none!important;display:block!important}
- #view{display:flex!important;flex-direction:column;gap:10px}
- .sheet,.game{box-shadow:none!important;break-inside:avoid;border-width:1.5px!important}
- .page-head{background:#fff!important;color:#000!important;box-shadow:none!important;border:0!important;border-bottom:2px solid #000!important;border-radius:0!important;padding:0 0 6px!important}
- .page-head::after,.page-head .sticker,.page-head .kicker{display:none!important}.page-head .lead{color:#333!important}.page-head h1,.page-head h1 *{color:#000!important;text-shadow:none!important}
- .pr-only{display:flex!important}.pr-head{justify-content:space-between;font-weight:700;font-size:14px;margin-bottom:4px}
- #view button:not(.card):not(.k-road button):not(.k-seg button){box-shadow:none!important}
- .row>.btn,.row>button.btn{display:none!important}
- .card b,.hide-words .card b{visibility:visible!important}
- .reveal button{background:#fff!important;border:1.5px solid #999!important}.reveal .ans{visibility:hidden!important}.reveal .ans:after{content:""}
- .pr-nogames .game{display:none!important}
- body.k-printing .page-head,body.k-printing .pr-head{display:none!important}
-}
+.a3grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:24px;align-items:start}
+.a3left,.a3right{display:flex;flex-direction:column;gap:12px;min-width:0}
+.a3stage{position:relative;border:2.5px solid var(--ink);border-radius:22px;overflow:hidden;background:radial-gradient(circle at 50% 38%,#fff 0%,#e4e0ff 55%,#c9c2ff 100%);aspect-ratio:4/3;box-shadow:5px 5px 0 var(--accent)}
+.a3canvas{width:100%;height:100%;display:block;touch-action:none;cursor:grab}
+.a3count{position:absolute;top:12px;right:14px;font:800 44px var(--display);color:var(--accent);min-width:1ch;text-align:center;text-shadow:0 2px 0 #fff}
+.a3views{position:absolute;left:10px;bottom:12px;display:flex;gap:8px;flex-wrap:wrap}
+.a3views .btn{padding:7px 13px;font-size:15px;box-shadow:0 3px 0 var(--ink)}
+.a3right h2{font-size:26px;color:var(--accent)}
+.a3cap{background:#fff3c4;border:2.5px solid var(--ink);border-radius:16px;padding:12px 16px;font-size:20px;font-weight:700;min-height:3.2em}
+.a3cap:empty{visibility:hidden}
+.a3list{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.a3list button{border:2.5px solid var(--ink);box-shadow:0 4px 0 var(--ink);border-radius:14px;background:#fff;padding:10px 8px;font-weight:800;font-size:16px;transition:transform .08s,box-shadow .08s}
+.a3list button:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--ink)}
+.a3list button.on{background:var(--sun)}
+@media (max-width:860px){.a3grid{grid-template-columns:1fr}}
+@media (min-width:1400px){#view .sheet.a3{grid-column:1/-1}}
 </style>
 </head>
 <body>
@@ -459,6 +423,7 @@ const ARTIC = {
   tis:{n:'«Тісіңді тазала»',d:'Күлімсіреп, аузыңды аш. Тіліңнің ұшымен төменгі тістеріңнің ішкі жағын оңға-солға сипа.'},
   sylaq:{n:'«Сылақшы»',d:'Аузыңды аш. Тіліңнің ұшымен таңдайыңды тістен тамаққа қарай және кері сипа.'},
   baraban:{n:'«Барабан»',d:'Күлімсіреп, аузыңды аш. Тіл ұшымен жоғарғы тістің артын соқ: д-д-д, д-д-д.'},
+  ine:{n:'«Ине»',d:'Аузыңды аш. Тіліңді жіңішкертіп, алға қарай соз. Тіл ұшы инедей үшкір болсын. Осылай ұстап тұр.'},
   kese:{n:'«Кесе»',d:'Аузыңды кең аш. Жалпақ тіліңнің шеттерін жоғары көтеріп, кесе жаса. Шайың төгілмесін!'}
 };
 const BREATH = {
@@ -645,6 +610,157 @@ const PYRAMID=[
  {n:'Сенсомоторлық даму',c:'#1f9d57',w:78,items:['дене қалпының тұрақтылығы','дененің екі жағын сезіну','қимылды жоспарлау','дене сызбасы','рефлекстердің жетілуі'],do:'Нейрожаттығулар: шеңбер, конус, текшемен маршруттар, екі қолды қатар жұмылдыратын саусақ жаттығулары.',links:['neiro','dene']},
  {n:'Сенсорлық жүйелер',c:'#0b8782',w:100,items:['тактильді (сипап сезу)','вестибулярлы (тепе-теңдік)','проприоцептивті (бұлшық ет сезімі)','көру','есту','иіс сезу','дәм сезу'],do:'Сабақтың басы: артикуляциялық және тыныс алу жаттығулары, массаж допшасы, тепе-теңдік кілемшесі, түстермен ойындар.',links:['tuster','neiro']}
 ];
+/* ===== 3D артикуляциялық жаттығулар ===== */
+const SB_BASE=(window.SB_TEMPLATE?'../':'');
+// Диктор жазбалары (audio/artic/<кілт>.mp3). Жазба қосылғанда кілті осы тізімге жазылады; жоқ болса браузердің қазақша дауысы қолданылады.
+const A3_AUDIO=[];
+const A3_NUM=['бір','екі','үш','төрт','бес'];
+/* Әр жаттығу: n — атауы, say — диктор мәтіні, hold — ұстап тұру ма (true) әлде қайталау ма, pose(t) — t секундтағы қалып */
+const A3_EX={
+  dual:{say:'Күлімсіре. Жоғарғы және төменгі тістерің түгел көрінсін. Осылай ұстап тұр.',hold:true,pose:()=>({wide:.85,lipU:.06,lipL:.13})},
+  tutik:{say:'Тістеріңді түйістір. Ерніңді дөңгелетіп, алға қарай соз.',hold:true,pose:()=>({wide:-1,lipU:.05,lipL:.06,prot:1})},
+  kurek:{say:'Аузыңды аш. Жалпақ, бос тіліңді төменгі ерніңнің үстіне қой. Қимылдатпай ұстап тұр.',hold:true,pose:()=>({jaw:.45,wide:.3,out:.5,ty:0,flat:1})},
+  ine:{say:'Аузыңды аш. Тіліңді жіңішкертіп, алға қарай соз. Тілің инедей үшкір болсын.',hold:true,pose:()=>({jaw:.42,wide:.2,out:.66,ty:.3,flat:0})},
+  kese:{say:'Аузыңды кең аш. Жалпақ тіліңнің шеттерін жоғары көтеріп, кесе жаса.',hold:true,pose:()=>({jaw:.62,wide:.2,out:.38,ty:.35,flat:1,cup:1})},
+  sanyr:{say:'Тіліңді таңдайыңа жабыстыр да, аузыңды кең аш. Осылай ұстап тұр.',hold:true,pose:()=>({jaw:.85,wide:.3,out:-.25,ty:1.1,arch:1,flat:.9})},
+  sagat:{say:'Күлімсіреп, аузыңды аш. Тіліңнің ұшын бір езуден екінші езуге апар. Тық-тық, тық-тық.',per:2,pose:t=>({jaw:.42,wide:.55,out:.52,ty:.3,flat:.1,tx:Math.sin(Math.PI*t)})},
+  atken:{say:'Аузыңды кең аш. Тіліңнің ұшын кезекпен жоғарғы тістің артына, сосын төменгі тістің артына тигіз.',per:2,pose:t=>({jaw:.7,wide:.4,out:-.05,flat:.45,ty:Math.sin(Math.PI*t)*1.05,arch:Math.max(0,Math.sin(Math.PI*t))*.5})},
+  tosap:{say:'Аузыңды аш. Жалпақ тіліңмен жоғарғы ерніңді жоғарыдан төмен қарай жала. Тосап өте тәтті!',per:2,pose:t=>{const k=(t%2)/2,up=k<.5?k*2:2-k*2;return {jaw:.5,wide:.3,flat:1,out:.2+up*.22,ty:.55+up*.95};}},
+  at:{say:'Тіліңді таңдайыңа жабыстырып, тақылдат. Ат шауып келеді: тақ-тақ, тақ-тақ.',per:1,pose:t=>{const up=(t%1)<.55;return {jaw:.55,wide:.35,flat:.8,out:up?-.2:.0,ty:up?1.05:-.5,arch:up?1:0};}},
+  tis:{say:'Күлімсіреп, аузыңды аш. Тіліңнің ұшымен төменгі тістеріңнің ішкі жағын оңға-солға сипа.',per:2,pose:t=>({jaw:.5,wide:.65,out:-.02,ty:-.95,flat:.3,tx:Math.sin(Math.PI*t)*.75})},
+  sylaq:{say:'Аузыңды аш. Тіліңнің ұшымен таңдайыңды тістен тамаққа қарай және кері сипа.',per:2,pose:t=>({jaw:.7,wide:.35,flat:.5,ty:1.05,arch:.7,out:-.05-.4*(.5-.5*Math.cos(Math.PI*t))})},
+  baraban:{say:'Күлімсіреп, аузыңды аш. Тіл ұшымен жоғарғы тістің артын соқ: д-д-д, д-д-д.',per:1,pose:t=>({jaw:.55,wide:.6,flat:.4,out:-.04,ty:.8+.28*Math.abs(Math.sin(Math.PI*4*t)),arch:.35})}
+};
+const A3_ORDER=['dual','tutik','kurek','ine','kese','sanyr','sagat','atken','tosap','at','tis','sylaq','baraban'];
+let A3_PENDING=null; // басқа беттен «3D-де көру» басылғанда таңдалатын жаттығу
+
+function a3LoadThree(){if(window.THREE)return Promise.resolve();if(window.__a3p)return window.__a3p;
+  return window.__a3p=new Promise((ok,no)=>{const s=document.createElement('script');s.src=SB_BASE+'vendor/three.min.js';s.onload=ok;s.onerror=()=>no(new Error('three'));document.head.append(s);});}
+
+/* ---------- Диктор ---------- */
+const A3V={au:null,tok:0,
+  kk(){try{const vs=speechSynthesis.getVoices().filter(v=>/^kk/i.test(v.lang));return vs.find(v=>/aigul/i.test(v.name))||vs.find(v=>/natural|online|neural/i.test(v.name))||vs[0]||null;}catch(e){return null;}},
+  has(){return A3_AUDIO.length>0||!!this.kk();},
+  stop(){this.tok++;try{if(this.au)this.au.pause();}catch(e){}try{speechSynthesis.cancel();}catch(e){}},
+  // мәтінді айтады; аяқталғанда (немесе дауыс жоқ болса, мәтін ұзындығына сай үзілістен кейін) шешіледі
+  say(key,text){this.stop();const tok=this.tok;return new Promise(done=>{let fin=false;const end=()=>{if(!fin){fin=true;done(tok===this.tok);}};
+    const silent=()=>setTimeout(end,Math.min(9000,900+text.length*55));
+    if(A3_AUDIO.includes(key)){try{this.au=this.au||new Audio();this.au.src=SB_BASE+'audio/artic/'+key+'.mp3';this.au.onended=end;this.au.onerror=()=>this.tts(text,end,silent);this.au.play().catch(()=>this.tts(text,end,silent));return;}catch(e){}}
+    this.tts(text,end,silent);});},
+  tts(text,end,silent){const v=this.kk();if(!v){silent();return;}try{const u=new SpeechSynthesisUtterance(text);u.voice=v;u.lang=v.lang;u.rate=.92;u.pitch=1.05;u.onend=u.onerror=end;speechSynthesis.speak(u);setTimeout(end,Math.min(15000,2500+text.length*110));}catch(e){silent();}}
+};
+
+/* ---------- 3D сахна ---------- */
+function a3Scene(canvas){const T=THREE,MY=-.38;
+  const renderer=new T.WebGLRenderer({canvas,antialias:true,alpha:true});renderer.setPixelRatio(Math.min(2,window.devicePixelRatio||1));renderer.outputEncoding=T.sRGBEncoding;
+  const scene=new T.Scene(),cam=new T.PerspectiveCamera(30,1,.1,50);
+  scene.add(new T.HemisphereLight(0xffffff,0x8f86c9,.62));
+  const key=new T.DirectionalLight(0xfff1dc,.62);key.position.set(2.2,2.6,4);scene.add(key);
+  const rim=new T.DirectionalLight(0x9db8ff,.38);rim.position.set(-3,1.5,-2.5);scene.add(rim);
+  const fill=new T.PointLight(0xffe2ea,.16,8);fill.position.set(0,-.6,2.6);scene.add(fill);
+  const head=new T.Group();scene.add(head);
+  const std=(c,r,m)=>new T.MeshStandardMaterial({color:c,roughness:r==null?.6:r,metalness:m||0});
+  // тері: ауыз ойығы шейдерде «кесіледі», жиегі тегіс шығады
+  const U={uW:{value:.3},uLU:{value:.02},uLL:{value:.02},uMY:{value:MY}};
+  const skin=std(0xffd0a8,.62);
+  skin.onBeforeCompile=sh=>{Object.assign(sh.uniforms,U);
+    sh.vertexShader=sh.vertexShader.replace('#include <common>','#include <common>\nvarying vec3 vObj;').replace('#include <begin_vertex>','#include <begin_vertex>\nvObj=position;');
+    sh.fragmentShader=sh.fragmentShader.replace('#include <common>','#include <common>\nvarying vec3 vObj;uniform float uW,uLU,uLL,uMY;').replace('#include <clipping_planes_fragment>','#include <clipping_planes_fragment>\n{float u=vObj.x/uW;if(vObj.z>0.&&abs(u)<1.){float k=1.-u*u;if(vObj.y<uMY+uLU*k&&vObj.y>uMY-uLL*k)discard;}}');};
+  head.add(new T.Mesh(new T.SphereGeometry(1,96,72),skin));
+  // ауыз қуысы
+  const cav=new T.Mesh(new T.SphereGeometry(.955,48,36),new T.MeshBasicMaterial({color:0x571320,side:T.BackSide}));head.add(cav);
+  // шаш, құлақ, көз, мұрын, бет ұшы
+  const hairM=std(0x4a2b1c,.5);
+  const hair=new T.Mesh(new T.SphereGeometry(1.045,64,32,0,Math.PI*2,0,Math.PI*.46),hairM);hair.rotation.x=-.32;head.add(hair);
+  [[-.5,.93,.42,.3],[0,1.0,.5,.32],[.5,.93,.42,.3]].forEach(([x,y,z,r])=>{const m=new T.Mesh(new T.SphereGeometry(r,24,16),hairM);m.position.set(x,y,z);m.scale.set(1.2,.7,.9);head.add(m);});
+  [-1,1].forEach(s=>{const bun=new T.Mesh(new T.SphereGeometry(.3,24,16),hairM);bun.position.set(s*.98,.72,-.15);head.add(bun);
+    const ear=new T.Mesh(new T.SphereGeometry(.17,24,16),std(0xffc59a,.6));ear.position.set(s*.99,.05,0);ear.scale.set(.55,1,.8);head.add(ear);
+    const blush=new T.Mesh(new T.SphereGeometry(.17,24,12),new T.MeshStandardMaterial({color:0xff8a9a,roughness:.8,transparent:true,opacity:.42}));blush.position.set(s*.6,-.1,.76);blush.scale.set(1,.7,.25);head.add(blush);
+    const brow=new T.Mesh(new T.BoxGeometry(.24,.045,.05),hairM);brow.position.set(s*.37,.56,.86);brow.rotation.z=-s*.12;brow.rotation.y=s*.35;head.add(brow);});
+  const eyes=[-1,1].map(s=>{const g=new T.Group();g.position.set(s*.36,.3,.86);g.rotation.y=s*.12;
+    const w=new T.Mesh(new T.SphereGeometry(.15,32,24),std(0xffffff,.25));w.scale.set(1,1.12,.55);g.add(w);
+    const iris=new T.Mesh(new T.SphereGeometry(.085,24,16),std(0x3b2a20,.3));iris.position.z=.07;iris.scale.z=.5;g.add(iris);
+    const hl=new T.Mesh(new T.SphereGeometry(.026,12,8),new T.MeshBasicMaterial({color:0xffffff}));hl.position.set(.035,.04,.115);g.add(hl);head.add(g);return g;});
+  const nose=new T.Mesh(new T.SphereGeometry(.085,24,16),std(0xffbd92,.55));nose.position.set(0,.02,1.0);head.add(nose);
+  // мойын мен иық
+  const neck=new T.Mesh(new T.CylinderGeometry(.34,.4,.7,32),std(0xffc59a,.65));neck.position.y=-1.15;scene.add(neck);
+  const body=new T.Mesh(new T.SphereGeometry(1.25,48,32),std(0x5b3fe0,.55));body.position.y=-2.45;body.scale.set(1.35,.95,.9);scene.add(body);
+  // ерін
+  const lipM=std(0xc8475f,.34);const lipU=new T.Mesh(new T.BufferGeometry(),lipM),lipL=new T.Mesh(new T.BufferGeometry(),lipM);head.add(lipU,lipL);
+  // тістер
+  const toothG=(()=>{const s=new T.Shape(),w=.031,h=.05,r=.014;s.moveTo(-w+r,-h);s.lineTo(w-r,-h);s.quadraticCurveTo(w,-h,w,-h+r);s.lineTo(w,h-r);s.quadraticCurveTo(w,h,w-r,h);s.lineTo(-w+r,h);s.quadraticCurveTo(-w,h,-w,h-r);s.lineTo(-w,-h+r);s.quadraticCurveTo(-w,-h,-w+r,-h);
+    const g=new T.ExtrudeGeometry(s,{depth:.03,bevelEnabled:true,bevelSize:.008,bevelThickness:.008,bevelSegments:3,curveSegments:6});g.translate(0,0,-.015);return g;})();
+  const toothM=std(0xfffdf6,.18);const upper=new T.Group(),lower=new T.Group();head.add(upper,lower);
+  for(let i=0;i<10;i++){const x=(i-4.5)*.07,z=.862-.75*x*x,ry=-x*1.5;[upper,lower].forEach((g,k)=>{const t=new T.Mesh(toothG,toothM);t.position.set(x,0,z-(k?.02:0));t.rotation.y=ry;if(Math.abs(i-4.5)<1.2&&!k)t.scale.set(1.12,1.1,1);g.add(t);});}
+  upper.position.y=MY+.012;
+  // тіл: орталық сызық бойына созылған эллипс қималы бет
+  const NS=30,NT=18,tg=new T.BufferGeometry(),tpos=new Float32Array((NS+1)*NT*3),tidx=[];
+  for(let i=0;i<NS;i++)for(let j=0;j<NT;j++){const a=i*NT+j,b=i*NT+(j+1)%NT,c=a+NT,d=b+NT;tidx.push(a,c,b,b,c,d);}
+  tg.setAttribute('position',new T.BufferAttribute(tpos,3));tg.setIndex(tidx);
+  const tongue=new T.Mesh(tg,new T.MeshStandardMaterial({color:0xff7d95,roughness:.33,emissive:0x40101a,emissiveIntensity:.3}));head.add(tongue);
+  const P={jaw:0,lipU:.02,lipL:.02,wide:0,prot:0,out:0,tx:0,ty:0,arch:0,flat:.5,cup:0},Z={...P};let target={...P};
+  const zs=(x,y)=>Math.sqrt(Math.max(.01,1-x*x-y*y));
+  function lip(mesh,sign,w,h,prot){const pts=[];for(let i=0;i<=24;i++){const u=-1+i/12,x=u*w*1.04,y=MY+sign*h*(1-u*u)+sign*.012*(1-u*u);pts.push(new T.Vector3(x,y,zs(x,y)+.012+prot*.1*(1-u*u*.6)));}
+    mesh.geometry.dispose();mesh.geometry=new T.TubeGeometry(new T.CatmullRomCurve3(pts),40,.034+prot*.012+(sign<0?.008:0),10,false);}
+  function shape(){const w=P.wide>=0?.36*(1+.2*P.wide):.36*(1+.62*P.wide),lu=P.lipU,ll=P.lipL+P.jaw*.42;
+    U.uW.value=w;U.uLU.value=lu;U.uLL.value=ll;lip(lipU,1,w,lu,P.prot);lip(lipL,-1,w,ll,P.prot);
+    lower.position.y=MY-.092-P.jaw*.36;lower.position.z=zs(0,lower.position.y-.05)-.925-.035;
+    // тілдің орталық сызығы: түбі — ортасы — ұшы (Безье)
+    const base=MY-P.jaw*.34,r=[0,MY-.1-P.jaw*.34,.3],tip=[P.tx*.31,base+(P.ty>=0?P.ty*.24:P.ty*.06),.78+P.out*.5-Math.max(0,-P.ty)*.13],
+      mid=[P.tx*.1,(base+.03)*(1-P.arch)+(MY+.13)*P.arch,(r[2]+tip[2])/2+P.arch*.06];
+    const a0=.095+.135*P.flat,b0=.07-.03*P.flat,sharp=1-P.flat;
+    for(let i=0;i<=NS;i++){const s=i/NS,q=1-s,c=[0,1,2].map(k=>q*q*r[k]+2*q*s*mid[k]+s*s*tip[k]),d=[0,1,2].map(k=>2*q*(mid[k]-r[k])+2*s*(tip[k]-mid[k]));
+      let ny=d[2],nz=-d[1];const nl=Math.hypot(ny,nz)||1;ny/=nl;nz/=nl;if(ny<0){ny=-ny;nz=-nz;}
+      const e=s>.72?Math.sqrt(Math.max(0,1-Math.pow((s-.72)/.28,2))):1,taper=(.72+.28*Math.sin(Math.PI*Math.min(1,s*1.15)))*e*(1-sharp*.45*s),a=a0*taper,b=b0*(.8+.2*q)*Math.max(e,.02);
+      for(let j=0;j<NT;j++){const th=j/NT*Math.PI*2,cx=Math.cos(th),sn=Math.sin(th),lift=P.cup*a*.95*cx*cx*Math.min(1,s*2.2),o=(i*NT+j)*3;
+        tpos[o]=c[0]+a*cx;tpos[o+1]=c[1]+(b*sn+lift)*ny;tpos[o+2]=c[2]+(b*sn+lift)*nz;}}
+    tg.attributes.position.needsUpdate=true;tg.computeVertexNormals();}
+  let rotY=0,rotX=0,tRotY=0,tRotX=0,zoom=.3,tZoom=.3,drag=null,alive=true,last=performance.now(),clock=0,pose=null,blink=2;
+  canvas.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY,tRotY,tRotX];canvas.setPointerCapture(e.pointerId);});
+  canvas.addEventListener('pointermove',e=>{if(!drag)return;tRotY=Math.max(-1.1,Math.min(1.1,drag[2]+(e.clientX-drag[0])*.008));tRotX=Math.max(-.35,Math.min(.35,drag[3]+(e.clientY-drag[1])*.006));});
+  ['pointerup','pointercancel'].forEach(n=>canvas.addEventListener(n,()=>drag=null));
+  function size(){const w=canvas.clientWidth||600,h=canvas.clientHeight||400;renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();}
+  const ro=window.ResizeObserver?new ResizeObserver(size):null;if(ro)ro.observe(canvas);size();
+  function frame(now){if(!alive)return;if(!canvas.isConnected){api.dispose();return;}const dt=Math.min(.05,(now-last)/1000);last=now;clock+=dt;
+    if(pose)target=Object.assign({...Z},pose(clock));const k=1-Math.exp(-dt*11);for(const n in P)P[n]+=(target[n]-P[n])*k;shape();
+    rotY+=(tRotY-rotY)*k;rotX+=(tRotX-rotX)*k;zoom+=(tZoom-zoom)*k;head.rotation.set(rotX+Math.sin(clock*.7)*.012,rotY+Math.sin(clock*.5)*.02,0);
+    blink-=dt;const bs=blink<0?Math.max(.1,Math.abs(blink+.09)/.09):1;if(blink<-.18)blink=2.5+Math.random()*2.5;eyes.forEach(g=>g.scale.y=Math.min(1,bs));
+    const dist=5.7-zoom*2.6;cam.position.set(0,-.05-zoom*.3,dist);cam.lookAt(0,-.08-zoom*.32,0);renderer.render(scene,cam);requestAnimationFrame(frame);}
+  const api={setPose(f){pose=f;clock=0;},resetClock(){clock=0;},view(y){tRotY=y;tRotX=0;},zoom(z){tZoom=z;},render(){frame(performance.now());},
+    dispose(){alive=false;if(ro)ro.disconnect();try{renderer.dispose();scene.traverse(o=>{if(o.geometry)o.geometry.dispose();});}catch(e){}}};
+  requestAnimationFrame(frame);return api;}
+
+/* ---------- Бет ---------- */
+function artic3dPage(){
+  const names=k=>ARTIC[k].n.replace(/[«»]/g,'');let cur=A3_PENDING&&A3_EX[A3_PENDING]?A3_PENDING:'kurek',scene3=null,runTok=0,running=false;A3_PENDING=null;
+  const canvas=el('canvas',{class:'a3canvas','aria-label':'Артикуляциялық жаттығуды көрсететін 3D кейіпкер'});
+  const cap=el('p',{class:'a3cap','aria-live':'polite'},''),count=el('div',{class:'a3count'},''),title=el('h2',null,''),desc=el('p',null,'');
+  const startBtn=el('button',{class:'btn',type:'button',onclick(){running?stop():run();}},'▶ Диктормен бастау');
+  const note=el('p',{class:'hint'},'');
+  const list=el('div',{class:'a3list',role:'list'},A3_ORDER.map(k=>el('button',{type:'button','data-k':k,onclick(){pick3(k);}},names(k))));
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+  function pick3(k){stop();cur=k;[...list.children].forEach(b=>b.classList.toggle('on',b.dataset.k===k));title.textContent=ARTIC[k].n;desc.textContent=ARTIC[k].d;cap.textContent='';count.textContent='';if(scene3)scene3.setPose(A3_EX[k].pose);}
+  function stop(){runTok++;running=false;A3V.stop();startBtn.textContent='▶ Диктормен бастау';count.textContent='';}
+  async function run(){const my=++runTok,ex=A3_EX[cur],ok=()=>my===runTok&&canvas.isConnected;running=true;startBtn.textContent='■ Тоқтату';
+    if(scene3)scene3.setPose(()=>({}));cap.textContent=ARTIC[cur].n+'. '+ex.say;await A3V.say(cur,ARTIC[cur].n.replace(/[«»]/g,'')+' жаттығуы. '+ex.say);if(!ok())return;
+    if(scene3)scene3.setPose(ex.pose);cap.textContent=ex.hold?'Бес санағанша ұстап тұр.':'Бес рет қайтала.';await sleep(500);
+    for(let i=0;i<5;i++){if(!ok())return;count.textContent=String(i+1);tone(true);const t0=Date.now();await A3V.say('n'+(i+1),A3_NUM[i]);if(!ok())return;const need=(ex.hold?1100:(ex.per||2)*1000)-(Date.now()-t0);if(need>0)await sleep(need);}
+    if(!ok())return;count.textContent='★';cap.textContent='Жарайсың! Енді демал.';if(scene3)scene3.setPose(()=>({wide:.7,lipU:.05,lipL:.1}));await A3V.say('praise','Жарайсың! Енді демал.');if(!ok())return;
+    running=false;startBtn.textContent='▶ Тағы бір рет';count.textContent='';if(scene3)scene3.setPose(ex.pose);}
+  const stage=el('div',{class:'a3stage'},canvas,count,el('div',{class:'a3views'},
+    el('button',{class:'btn ghost',type:'button',onclick(){scene3&&scene3.view(0);}},'Алдынан'),
+    el('button',{class:'btn ghost',type:'button',onclick(){scene3&&scene3.view(.85);}},'Қырынан'),
+    (()=>{let z=0;const b=el('button',{class:'btn ghost',type:'button',onclick(){z=z?0:1;scene3&&scene3.zoom(z?1:.3);b.textContent=z?'Алыстату':'Жақындату';}},'Жақындату');return b;})()));
+  const fail=el('p',{class:'hint'},'');
+  a3LoadThree().then(()=>{if(!canvas.isConnected)return;try{scene3=a3Scene(canvas);scene3.setPose(A3_EX[cur].pose);}catch(e){fail.textContent='Бұл құрылғыда 3D көрініс ашылмады. Жаттығудың сипаттамасын оқып орындаңыз.';}
+    const upd=()=>{note.textContent=A3_AUDIO.length?'':A3V.kk()?'Диктор: браузердің қазақша дауысы.':'Бұл браузерде қазақша дауыс табылмады, сондықтан диктор мәтіні экранда көрсетіледі. Дауыспен тыңдау үшін сайтты Microsoft Edge браузерінде ашыңыз.';};upd();try{speechSynthesis.addEventListener('voiceschanged',upd);}catch(e){}
+  }).catch(()=>{fail.textContent='3D кітапханасы жүктелмеді. Интернет байланысын тексеріп, бетті жаңартыңыз.';});
+  setTimeout(()=>pick3(cur));
+  return [el('section',{class:'sheet a3'},el('div',{class:'a3grid'},
+      el('div',{class:'a3left'},stage,el('p',{class:'hint'},'Кейіпкерді саусақпен немесе тінтуірмен бұрып, жан-жағынан қарауға болады.'),fail),
+      el('div',{class:'a3right'},title,desc,cap,el('div',{class:'row'},startBtn),note,el('h3',null,'Жаттығуды таңда'),list))),
+    plain('Қалай жұмыс істейміз',ul(['Бала айнаның алдында отырады, экрандағы кейіпкерге қарап, қимылды қайталайды.','Алдымен жаттығуды диктормен бірге тыңдаңыз, сосын бес рет қайталаңыз немесе бес санағанша ұстап тұрыңыз.','«Қырынан» және «Жақындату» батырмалары тіл мен еріннің қалпын анық көрсетеді.','Күніне 5–7 жаттығу жеткілікті. Бала шаршаса, үзіліс жасаңыз.']))];
+}
 /* ===== Үлгі (шаблон) режимі: әр қолданушы өз мәліметін өзі толтырады ===== */
 const TPL=!!window.SB_TEMPLATE;
 let PROF={};try{PROF=JSON.parse(localStorage.getItem('sb-profile')||'{}')||{};}catch(e){PROF={};}
@@ -666,9 +782,9 @@ function sheet(title,...kids){stepNo++;return el('section',{class:'sheet'},el('d
 function plain(title,...kids){return el('section',{class:'sheet'},title&&el('h2',null,title),kids);}
 function ul(items){return el('ul',null,items.map(i=>el('li',null,i)));}
 
-function exCard(x,secs){const t=el('span',{class:'timer'},'');let id;const b=el('button',{class:'btn ghost',type:'button',onclick(){clearInterval(id);let s=secs;t.textContent=s;id=setInterval(()=>{s--;t.textContent=s>0?s:'Болды!';if(s<=0){clearInterval(id);tone(true);}},1000);}},secs+' секунд сана');
-  return el('div',{class:'ex'},el('h3',null,x.n),el('p',null,x.d),el('div',{class:'row'},b,t));}
-function articBlock(keys){return sheet('Артикуляциялық жаттығу',el('p',{class:'hint'},'Айнаның алдында отырып орындаймыз. Әр жаттығуды 3–5 рет қайтала.'),el('div',{class:'ex-grid'},keys.map(k=>exCard(ARTIC[k],10))));}
+function exCard(x,secs,key){const t=el('span',{class:'timer'},'');let id;const b=el('button',{class:'btn ghost',type:'button',onclick(){clearInterval(id);let s=secs;t.textContent=s;id=setInterval(()=>{s--;t.textContent=s>0?s:'Болды!';if(s<=0){clearInterval(id);tone(true);}},1000);}},secs+' секунд сана');
+  return el('div',{class:'ex'},el('h3',null,x.n),el('p',null,x.d),el('div',{class:'row'},b,key&&A3_EX[key]&&el('a',{class:'btn',href:'#artik3d',onclick(){A3_PENDING=key;}},'3D-де көру'),t));}
+function articBlock(keys){return sheet('Артикуляциялық жаттығу',el('p',{class:'hint'},'Айнаның алдында отырып орындаймыз. Әр жаттығуды 3–5 рет қайтала.'),el('div',{class:'ex-grid'},keys.map(k=>exCard(ARTIC[k],10,k))));}
 function breathBlock(key){const x=BREATH[key];const lung=el('div',{class:'lung'});const lab=el('b',null,'');let ids=[];
   const b=el('button',{class:'btn ghost',type:'button',onclick(){ids.forEach(clearTimeout);ids=[];lung.classList.remove('go');void lung.offsetWidth;lung.classList.add('go');for(let i=0;i<3;i++){ids.push(setTimeout(()=>lab.textContent='Мұрынмен дем ал…',i*10000));ids.push(setTimeout(()=>lab.textContent='Ауызбен баяу шығар…',i*10000+4000));}ids.push(setTimeout(()=>lab.textContent='Жарайсың!',30000));}},'Бастау');
   return sheet('Тыныс алу жаттығуы',el('div',{class:'ex'},el('h3',null,x.n),el('p',null,x.d)),el('div',{class:'breath'},lung,el('div',{class:'row'},b,lab)),el('p',{class:'hint'},'Шеңбер үлкейгенде дем аламыз, кішірейгенде дем шығарамыз. Үш рет қайталанады.'));}
@@ -733,14 +849,14 @@ function voiceGame(){return game('Дауыс өлшегіш','Дыбысты т�
   g.body.append(faces,big,tank,el('div',{class:'row',style:'justify-content:center'},startBtn,hold),note);});}
 
 /* ===== Беттер ===== */
-const GROUPS=[['Таныстыру',['home','kirispe','piramida','ozim','oqushylar']],['Лексикалық тақырыптар',['dene','uy-zhanuarlary','zhemister','kokonister','ydystar','kiimder']],['Жыл мезгілдері',['zhaz','kuz','qys','koktem']],['Дыбыс, түс, қимыл',['tuster','dybystar','neiro']],['Ұғымдар',['antonimder','kop-az','ulken-kishi']],['Қосымшалар',['sozdik-1','sozdik-2','buyndar']],['Педагог пен ата-ана',['ata-analarga','galereya','pikirler']]];
+const GROUPS=[['Таныстыру',['home','kirispe','piramida','ozim']],['Лексикалық тақырыптар',['dene','uy-zhanuarlary','zhemister','kokonister','ydystar','kiimder']],['Жыл мезгілдері',['zhaz','kuz','qys','koktem']],['Дыбыс, түс, қимыл',['tuster','artik3d','dybystar','neiro']],['Ұғымдар',['antonimder','kop-az','ulken-kishi']],['Қосымшалар',['sozdik-1','sozdik-2','buyndar']],['Педагог пен ата-ана',['ata-analarga','galereya','pikirler']]];
 const PAGES={
  home:{title:'Бастапқы бет',icon:'🏠'},
  kirispe:{title:'Кіріспе',icon:'📘',lead:'Бұл жинақ кімге арналған және онымен қалай жұмыс істеу керек.'},
  piramida:{title:'Вильямс және Шелленбергер пирамидасы арқылы түзету жұмыстары',short:'Вильямс және Шелленбергер пирамидасы',icon:'🔺',lead:'Сөйлеу тілі баланың сенсорлық және қимыл дамуының үстіне құрылады. Сондықтан түзету жұмысын пирамиданың табанынан бастаймыз.'},
- oqushylar:{title:'Оқушыларым: портфолио және даму картасы',short:'Оқушыларым және даму картасы',icon:'🗺️',lead:'Әр баланың портфолиосы: дыбыстар бойынша деңгей картасы, дағдылар шкаласы және жетістіктер күнделігі.'},
  ozim:{title:'Өзім туралы',icon:'👩‍🏫',lead:'Сайт авторы туралы мәлімет.'},
  tuster:{title:'Түстер әлемі',icon:'🎨',lead:'Түстерді танимыз, атаймыз және заттарды түсіне қарай топтаймыз.'},
+ artik3d:{title:'3D артикуляциялық жаттығулар',short:'3D артикуляция',icon:'👄',lead:'Кейіпкер тіл, ерін және жақ қимылын көрсетеді, диктор түсіндіреді. Қарап отырып бірге қайталаймыз.'},
  dybystar:{title:'Дыбыстар бойынша тапсырмалар',icon:'🔤',lead:'Қойылған дыбысты сегіз кезеңмен бекітеміз: жеке дыбыс, ашық буын, тұйық буын, сөздің басы, ортасы, соңы, сөйлем, мәтін.'},
  neiro:{title:'Нейрожаттығулар',short:'Нейро жаттығулар',icon:'🧠',lead:'Қимылды жоспарлау, жұмыс жады және екі жарты шардың өзара байланысын дамытатын жаттығулар.'},
  antonimder:{title:'Антонимдер',icon:'↔️',lead:'Мағынасы қарама-қарсы сөздерді табамыз және сөйлемде қолданамыз.'},
@@ -815,6 +931,7 @@ function ozimTpl(){const shown=PFIELDS.filter(([k])=>PROF[k]&&k!=='wa');const ms
 function topicPage(k){const T=TOPICS[k];return [articBlock(T.artic),breathBlock(T.breath),cardsBlock('Суретке қарап ата',T.items),revealBlock(T.items),
   findGame(T.askTitle||'Сұраққа суретпен жауап бер','Сұрақты тыңда да, дұрыс суретті көрсет.',T.ask),qaBlock(T.qa),chantBlock(T.chant),
   findGame('Көрсет','Аталған суретті тауып бас.',T.items,w=>'«'+cap(w)+'» қайда?'),nameGame(T.items),shadowGame(T.items),memoryGame(T.items),T.sort&&sortGame(T.sort.title,T.sort.bins)];}
+R.artik3d=artic3dPage;
 if(TPL){R.home=homeTpl;R.ozim=ozimTpl;}
 Object.keys(TOPICS).forEach(k=>R[k]=()=>topicPage(k));
 function seasonPage(k){const S=SEASONS[k];const all=SEASON_KEYS.flatMap(s=>SEASONS[s].signs.map(x=>[x[0],x[1],s]));
@@ -839,7 +956,7 @@ R.dybystar=()=>{const host=el('div',{class:'wrap'});const tabs=el('div',{class:'
   const hi=(s,L)=>{const span=el('span',null);[...s].forEach(ch=>span.append(ch.toLowerCase()===L.toLowerCase()?el('mark',null,ch):ch));return span;};
   function render(L){stepNo=0;const S=SOUNDS[L],l=L.toLowerCase();[...tabs.children].forEach(b=>b.classList.toggle('on',b.textContent===L));host.innerHTML='';
     const words=[...S.w1.map(w=>[...w,0]),...S.w2.map(w=>[...w,1]),...S.w3.map(w=>[...w,2])],pos=['Сөздің басында','Сөздің ортасында','Сөздің соңында'];
-    host.append(sheet('«'+L+'» дыбысы қалай айтылады',el('p',null,S.how),el('div',{class:'ex-grid'},S.artic.map(k=>exCard(ARTIC[k],10)))),
+    host.append(sheet('«'+L+'» дыбысы қалай айтылады',el('p',null,S.how),el('div',{class:'ex-grid'},S.artic.map(k=>exCard(ARTIC[k],10,k)))),
      sheet('Жеке дыбысты айтамыз',el('div',{class:'bigsyl'},L+' '+l),el('p',null,S.play),el('div',{class:'ex-grid'},[exCard({n:'Ұзақ айт',d:'Бір деммен созып айт: '+l+'-'+l+'-'+l+'-'+l+'.'},5),exCard({n:'Қысқа айт',d:'Үзіп-үзіп айт: '+l+'! '+l+'! '+l+'!'},5)])),
      sheet('Ашық буындар: тастан тасқа секір',el('p',{class:'hint'},'Әр тасты басып, буынды дауыстап оқы. Барлық тастан өтсең, өзеннен шығасың.'),stones(VOW_OPEN.map(v=>l+v))),
      sheet('Тұйық буындар: тастан тасқа секір',el('p',{class:'hint'},'Буынды анық айт, дыбысты соңында созып тұр.'),stones(VOW_CLOSED.map(v=>v+l))),
@@ -909,77 +1026,12 @@ R.galereya=()=>[plain('Фотосуреттер',el('p',{class:'hint'},'Суре
 R.pikirler=()=>[plain('Пікірлер',el('p',{class:'hint'},'Мұнда әріптестер мен ата-аналардың өз сөзімен жазған пікірлері аты-жөнімен бірге жарияланады.'),el('div',{class:'ex-grid'},[1,2,3].map(i=>el('div',{class:'ph'},el('small',null,'Кейін толтырылады'),'Пікір мәтіні, авторының аты-жөні және лауазымы')))),
   plain('Пікір қалдыру және байланыс',ph('','Пікір жинайтын сауалнаманың сілтемесі берілген соң осы жерде «Пікір қалдыру» батырмасы тұрады.'),el('div',{class:'row'},WA(),el('b',null,'+7 777 184 0094')))];
 
-
-/* ===== Оқушыларым: портфолио және даму картасы (деректер тек осы браузерде) ===== */
-const KSTAGES=['Дайындық','Дыбыс қойылды','Ашық буын','Тұйық буын','Сөздің басы','Сөздің ортасы','Сөздің соңы','Сөйлем','Мәтін','Еркін сөйлеу'];
-const KSTAGE_HINT=['Артикуляциялық және тыныс алу жаттығулары','Дыбысты жеке, дұрыс айтады','са, со, сы…','ас, ос, ыс…','сабын, сағат…','оса, аспан…','тас, бас…','Дыбысы бар сөйлемді айтады','Мәтінді, өлеңді айтып береді','Күнделікті сөйлеуде дұрыс қолданады'];
-const KTIERS=[[0,'Бастапқы','#ff6650'],[30,'Дамып келеді','#e09a00'],[60,'Жақсы','#1c72d0'],[90,'Жоғары','#13894f']];
-const KSKILLS=[['artic','Артикуляциялық моторика'],['phon','Фонематикалық есту'],['lex','Сөздік қор'],['gram','Грамматикалық құрылым'],['coh','Байланыстырып сөйлеу'],['fine','Ұсақ моторика'],['att','Зейін және жады']];
-const KSOUNDS=['С','З','Ц','Ш','Ж','Щ','Ч','Р','Л','К','Г','Қ','Ғ'];
-let KIDS=[];try{KIDS=JSON.parse(localStorage.getItem('sb-kids')||'[]')||[];}catch(e){KIDS=[];}
-let KSEL=null;
-function saveKids(){try{localStorage.setItem('sb-kids',JSON.stringify(KIDS));return true;}catch(e){alertKid('Сақтау мүмкін болмады: браузер деректерді сақтауға рұқсат бермеді.');return false;}}
-function alertKid(t){const m=document.getElementById('kd-msg');if(m)m.textContent=t;}
-const today=()=>new Date().toISOString().slice(0,10);
-const fmtD=d=>d?d.split('-').reverse().join('.'):'';
-const kidPct=k=>{const a=(k.sounds||[]).map(x=>x.st/(KSTAGES.length-1));const b=Object.values(k.skills||{}).filter(Boolean).map(v=>(v-1)/4);const all=a.concat(b);return all.length?Math.round(all.reduce((x,y)=>x+y,0)/all.length*100):0;};
-const tierOf=p=>KTIERS.filter(t=>p>=t[0]).pop();
-function ring(p,size){const r=40,c=2*Math.PI*r,t=tierOf(p);return el('div',{class:'k-ring',style:'width:'+size+'px;height:'+size+'px',role:'img','aria-label':'Жалпы даму деңгейі: '+p+'%, '+t[1],html:`<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="${r}" fill="none" stroke="var(--soft)" stroke-width="12"/><circle cx="50" cy="50" r="${r}" fill="none" stroke="${t[2]}" stroke-width="12" stroke-linecap="round" stroke-dasharray="${c*p/100} ${c}" transform="rotate(-90 50 50)"/></svg><span><b>${p}%</b><small>${t[1]}</small></span>`});}
-function kidCard(k){const p=kidPct(k);return el('button',{type:'button',class:'k-card'+(KSEL===k.id?' on':''),onclick(){KSEL=k.id;route();}},ring(p,64),el('span',{class:'k-cardtx'},el('b',null,k.name||'Аты жазылмаған'),el('small',null,[k.age&&k.age,(k.sounds||[]).map(x=>x.s).join(', ')].filter(Boolean).join(' · ')||'Дыбыс таңдалмаған')));}
-function soundMap(k,sd){const box=el('div',{class:'k-map'});
-  const head=el('div',{class:'k-maphead'},el('span',{class:'k-snd'},sd.s),el('div',null,el('b',null,'«'+sd.s+'» дыбысы: '+(sd.st+1)+'-деңгей · '+KSTAGES[sd.st]),el('small',null,KSTAGE_HINT[sd.st])),
-    el('button',{type:'button',class:'k-x','aria-label':'«'+sd.s+'» дыбысын картадан алып тастау',onclick(){if(!confirm('«'+sd.s+'» дыбысының картасын өшіресіз бе?'))return;k.sounds=k.sounds.filter(x=>x!==sd);saveKids();route();}},'✕'));
-  const road=el('ol',{class:'k-road'},KSTAGES.map((n,i)=>el('li',{class:(i<sd.st?'done':'')+(i===sd.st?' cur':'')},
-    el('button',{type:'button','aria-pressed':String(i===sd.st),title:KSTAGE_HINT[i],onclick(){if(sd.st===i)return;sd.st=i;(sd.hist=sd.hist||[]).push({st:i,d:today()});saveKids();route();}},
-      el('span',{class:'k-dot'},i===sd.st?em('🧒'):(i<sd.st?'✓':String(i+1))),el('span',{class:'k-lbl'},n)))));
-  const h=(sd.hist||[]).slice(-4).reverse();
-  box.append(head,road,h.length?el('p',{class:'hint k-hist'},'Соңғы өзгерістер: '+h.map(x=>fmtD(x.d)+' — '+KSTAGES[x.st]).join('; ')):null);return box;}
-function skillRow(k,key,label){const v=(k.skills||{})[key]||0;return el('div',{class:'k-skill'},el('span',null,label),el('div',{class:'k-seg',role:'radiogroup','aria-label':label},[1,2,3,4,5].map(n=>el('button',{type:'button',role:'radio','aria-checked':String(v===n),class:n<=v?'on':'','aria-label':n+' деңгей',onclick(){k.skills=k.skills||{};k.skills[key]=v===n?0:n;saveKids();route();}},String(n)))),el('small',null,v?['','Өте төмен','Төмен','Орташа','Жақсы','Жоғары'][v]:'Бағаланбаған'));}
-function kidForm(k){const F=[['name','Аты (немесе бүркеншік аты)'],['age','Жасы / сыныбы'],['start','Түзету жұмысы басталған күн','date'],['concl','Логопедиялық қорытынды',1],['goal','Жұмыс мақсаты',1]];const inp={};
-  return el('form',{class:'pform',onsubmit(e){e.preventDefault();F.forEach(([f])=>k[f]=inp[f].value.trim());if(!k.name){alertKid('Баланың атын жазыңыз.');return;}saveKids();KSEL=k.id;route();}},
-    F.map(([f,l,t])=>{const i=el(t===1?'textarea':'input',{id:'kd-'+f,rows:t===1?2:null,type:t===1?null:(t||'text')});i.value=k[f]||'';inp[f]=i;return el('div',{class:'pf'},el('label',{for:'kd-'+f},l),i);}),
-    el('div',{class:'row'},el('button',{class:'btn',type:'submit'},'Сақтау')));}
-function kidPage(k){const p=kidPct(k),t=tierOf(p);const add=el('div',{class:'k-add'},el('span',{class:'hint'},'Дыбыс қосу:'),KSOUNDS.filter(s=>!(k.sounds||[]).some(x=>x.s===s)).map(s=>el('button',{type:'button',class:'chip k-chip',onclick(){(k.sounds=k.sounds||[]).push({s,st:0,hist:[{st:0,d:today()}]});saveKids();route();}},'+ '+s)));
-  const nt=el('textarea',{id:'kd-note',rows:2,placeholder:'Мысалы: «Р» дыбысын сөз басында дұрыс айтты. Үйге: «Ат шауып келеді» жаттығуы.'});const nd=el('input',{type:'date',id:'kd-nd'});nd.value=today();
-  let del=false;const delB=el('button',{type:'button',class:'btn ghost',onclick(){if(!del){del=true;delB.textContent='Өшіру үшін тағы бір рет басыңыз';return;}KIDS=KIDS.filter(x=>x!==k);KSEL=null;saveKids();route();}},'Баланы тізімнен өшіру');
-  return [el('section',{class:'sheet k-hero'},ring(p,120),el('div',null,el('h2',null,k.name),el('p',null,[k.age,k.start&&('Жұмыс басталды: '+fmtD(k.start))].filter(Boolean).join(' · ')),
-      el('p',null,el('b',null,'Жалпы деңгей: '),p+'% — '+t[1]),k.concl&&el('p',null,el('b',null,'Қорытынды: '),k.concl),k.goal&&el('p',null,el('b',null,'Мақсат: '),k.goal),
-      el('div',{class:'row no-print'},el('button',{type:'button',class:'btn',onclick(){document.body.classList.add('k-printing');setTimeout(()=>{print();document.body.classList.remove('k-printing');},50);}},'🖨 Портфолионы басып шығару'),el('button',{type:'button',class:'btn ghost',onclick(){KSEL=null;route();}},'← Барлық балалар')))),
-    plain('Дыбыстар бойынша деңгей картасы',el('p',{class:'hint no-print'},'Бала қай кезеңге жеткенін аялдаманы басып белгілеңіз. Әр өзгерістің күні өзі жазылады.'),...(k.sounds||[]).map(sd=>soundMap(k,sd)),(k.sounds||[]).length?null:el('p',{class:'hint'},'Әзірге дыбыс қосылмаған. Төменнен түзетілетін дыбысты таңдаңыз.'),add),
-    plain('Дағдылар шкаласы',el('p',{class:'hint no-print'},'1 — өте төмен, 5 — жоғары. Қайта басса, баға алынып тасталады.'),el('div',{class:'k-skills'},KSKILLS.map(([key,l])=>skillRow(k,key,l)))),
-    plain('Жетістіктер күнделігі',el('form',{class:'k-noteform no-print',onsubmit(e){e.preventDefault();const t=nt.value.trim();if(!t)return;(k.notes=k.notes||[]).unshift({d:nd.value||today(),t});saveKids();route();}},el('div',{class:'pf'},el('label',{for:'kd-nd'},'Күні'),nd),el('div',{class:'pf',style:'flex:1'},el('label',{for:'kd-note'},'Не үйренді, не қиын болды'),nt),el('button',{class:'btn',type:'submit'},'Қосу')),
-      (k.notes||[]).length?el('ul',{class:'k-notes'},k.notes.map((n,i)=>el('li',null,el('b',null,fmtD(n.d)),el('span',null,n.t),el('button',{type:'button',class:'k-x no-print','aria-label':'Жазбаны өшіру',onclick(){k.notes.splice(i,1);saveKids();route();}},'✕')))):el('p',{class:'hint'},'Әзірге жазба жоқ.')),
-    el('details',{class:'sheet no-print'},el('summary',null,el('b',null,'Баланың мәліметін өзгерту')),kidForm(k),el('div',{class:'row'},delB))];}
-R.oqushylar=()=>{const k=KIDS.find(x=>x.id===KSEL);const msg=el('p',{id:'kd-msg',class:'hint','aria-live':'polite'});
-  const fi=el('input',{type:'file',accept:'.json,application/json',hidden:true,onchange(){const f=fi.files[0];if(!f)return;f.text().then(t=>{const d=JSON.parse(t);const arr=Array.isArray(d)?d:d.kids;if(!Array.isArray(arr))throw 0;let n=0;arr.forEach(x=>{if(!x||!x.name)return;const i=KIDS.findIndex(y=>y.id===x.id);if(i>=0)KIDS[i]=x;else KIDS.push(x);n++;});saveKids();route();alertKid(n+' баланың мәліметі жүктелді.');}).catch(()=>alertKid('Файл оқылмады. «Сөйле, балақай» сақтаған .json файлын таңдаңыз.'));}});
-  const tools=el('div',{class:'row no-print'},el('button',{type:'button',class:'btn ghost',onclick(){const b=new Blob([JSON.stringify({app:'soile-balaqai',saved:today(),kids:KIDS},null,1)],{type:'application/json'});const a=el('a',{href:URL.createObjectURL(b),download:'Оқушыларым_'+today()+'.json'});document.body.append(a);a.click();a.remove();}},'💾 Файлға сақтау'),el('button',{type:'button',class:'btn ghost',onclick(){fi.click();}},'📂 Файлдан жүктеу'),fi);
-  if(k)return [...kidPage(k),msg];
-  const nk={id:'k'+Date.now().toString(36),sounds:[],skills:{},notes:[]};
-  return [plain('Балалар тізімі',el('p',{class:'hint'},'Мәліметтер тек осы құрылғыдағы осы браузерде сақталады, интернетке жіберілмейді. Басқа құрылғыға көшіру немесе сақтық көшірме үшін «Файлға сақтау» батырмасын қолданыңыз. Баланың толық аты-жөнінің орнына атын не бүркеншік атын жазуға болады.'),
-      KIDS.length?el('div',{class:'k-list'},KIDS.map(kidCard)):el('p',{class:'hint'},'Әзірге бала қосылмаған. Төмендегі форманы толтырыңыз.'),tools,msg),
-    plain('Жаңа бала қосу',el('form',{class:'pform',onsubmit(e){e.preventDefault();const n=document.getElementById('kn-name').value.trim();if(!n){alertKid('Баланың атын жазыңыз.');return;}nk.name=n;nk.age=document.getElementById('kn-age').value.trim();nk.start=today();KIDS.push(nk);if(saveKids()){KSEL=nk.id;route();}}},
-      el('div',{class:'pf'},el('label',{for:'kn-name'},'Аты (немесе бүркеншік аты)'),el('input',{id:'kn-name',type:'text',autocomplete:'off'})),el('div',{class:'pf'},el('label',{for:'kn-age'},'Жасы / сыныбы'),el('input',{id:'kn-age',type:'text',placeholder:'Мысалы: 6 жас, даярлық тобы'})),
-      el('div',{class:'row'},el('button',{class:'btn',type:'submit'},'+ Бала қосу')))),
-    plain('Деңгей картасы қалай жұмыс істейді',el('p',null,'Әр түзетілетін дыбыс 10 аялдамадан өтеді: дайындықтан бастап еркін сөйлеуге дейін. Бала жаңа кезеңге жеткенде аялдаманы басасыз, картадағы 🧒 белгісі алға жылжиды.'),el('div',{class:'chips'},KSTAGES.map((n,i)=>el('span',{class:'chip arrow'},(i+1)+'. '+n))),el('p',null,'Жалпы деңгей дыбыстар картасы мен дағдылар шкаласы бойынша есептеледі: ',KTIERS.map(t=>t[1]+' ('+t[0]+'%-дан)').join(', ')+'.'))];};
-
-
-/* ===== Басып шығару: экраннан көз шаршамас үшін тапсырманы қағазға ===== */
-const NOPRINT_BAR=['oqushylar'];
-function doPrint(withGames){document.body.classList.toggle('pr-nogames',!withGames);document.body.classList.add('pr-task');
-  const done=()=>{document.body.classList.remove('pr-task','pr-nogames');removeEventListener('afterprint',done);};addEventListener('afterprint',done);setTimeout(()=>{print();setTimeout(done,1500);},60);}
-function printBar(id){if(NOPRINT_BAR.includes(id))return null;const hasGame=()=>!!document.querySelector('#view .game');
-  const b1=el('button',{type:'button',class:'btn sun',onclick(){doPrint(false);}},'🖨 Басып шығару');
-  const b2=el('button',{type:'button',class:'btn ghost',onclick(){doPrint(true);}},'Ойындармен бірге');
-  const bar=el('div',{class:'row pr-bar no-print'},b1,b2,el('small',null,'Баланың көзі шаршамасын: тапсырманы қағазға басып, үстел басында орындатыңыз.'));
-  setTimeout(()=>{if(!hasGame())b2.remove();});return bar;}
-
 /* ===== Навигация ===== */
 const nav=document.getElementById('nav'),view=document.getElementById('view'),side=document.getElementById('side');
 GROUPS.forEach(([g,ids])=>{nav.append(el('div',{class:'nav-group'},g));ids.forEach(id=>nav.append(el('a',{href:'#'+id,'data-id':id},el('span',{class:'n'},String(ORDER.indexOf(id)+1)),el('span',null,PAGES[id].short||PAGES[id].title))));});
 function route(){let id=location.hash.slice(1);if(!PAGES[id])id='home';const P=PAGES[id],i=ORDER.indexOf(id);stepNo=0;view.innerHTML='';document.body.className='g'+GROUPS.findIndex(g=>g[1].includes(id));
   nav.querySelectorAll('a').forEach(a=>a.classList.toggle('on',a.dataset.id===id));side.classList.remove('open');
-  if(id!=='home')view.append(el('header',{class:'page-head has-sticker'},el('span',{class:'sticker emoji','aria-hidden':'true'},P.icon),el('div',{class:'kicker'},GROUPS.find(g=>g[1].includes(id))[0]+' · '+(i+1)+' / '+ORDER.length),el('h1',null,P.title),P.lead&&el('p',{class:'lead'},P.lead),printBar(id)));
-  view.append(el('div',{class:'pr-only pr-head'},el('span',null,'Аты-жөні: ______________________'),el('span',null,'Күні: ____________'),el('span',null,'«Сөйле, балақай»')));
+  if(id!=='home')view.append(el('header',{class:'page-head has-sticker'},el('span',{class:'sticker emoji','aria-hidden':'true'},P.icon),el('div',{class:'kicker'},GROUPS.find(g=>g[1].includes(id))[0]+' · '+(i+1)+' / '+ORDER.length),el('h1',null,P.title),P.lead&&el('p',{class:'lead'},P.lead)));
   view.append(...R[id]().filter(Boolean));
   view.append(el('nav',{class:'pager','aria-label':'Беттер арасында өту'},i>0?el('a',{href:'#'+ORDER[i-1]},'← '+(PAGES[ORDER[i-1]].short||PAGES[ORDER[i-1]].title)):el('span'),i<ORDER.length-1?el('a',{href:'#'+ORDER[i+1]},(PAGES[ORDER[i+1]].short||PAGES[ORDER[i+1]].title)+' →'):el('span')));
   document.querySelector('main').scrollIntoView();window.scrollTo(0,0);}
