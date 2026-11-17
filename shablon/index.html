@@ -402,6 +402,76 @@ table.syl td button:hover,table.syl td button.on{background:var(--sun)}
 .place{background:var(--sun);border:2px solid var(--ink);border-radius:10px;padding:3px 10px;white-space:nowrap;font-size:14px}
 @media (max-width:600px){.achl li{grid-template-columns:1fr}.lvl-tag,.place{justify-self:start}}
 #view .sheet:has(.ach){grid-column:1/-1}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.gal-doc{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+.gal-video{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.gi{display:flex;flex-direction:column;gap:0;padding:0;border:2.5px solid var(--ink);border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 5px 0 var(--ink);text-align:left;transition:transform .08s,box-shadow .08s}
+.gi:hover{transform:translateY(-3px);box-shadow:0 8px 0 var(--ink)}
+.gi img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:var(--soft)}
+.gal-doc .gi img{aspect-ratio:3/4;object-fit:contain;background:#f3f1ea;padding:8px}
+.gi span{padding:10px 12px;font-weight:700;font-size:14.5px;line-height:1.3;border-top:2.5px solid var(--ink)}
+.gv{margin:0;border:2.5px solid var(--ink);border-radius:18px;overflow:hidden;background:#000;box-shadow:0 5px 0 var(--ink)}
+.gv video{width:100%;aspect-ratio:9/12;object-fit:contain;display:block;background:#111}
+.gv figcaption{background:#fff;padding:10px 12px;font-weight:700;font-size:14.5px;border-top:2.5px solid var(--ink)}
+.lb{position:fixed;inset:0;z-index:100;background:rgba(17,20,46,.88);display:flex;align-items:center;justify-content:center;padding:20px}
+.lb figure{margin:0;max-width:min(1100px,92vw);display:flex;flex-direction:column;gap:10px;align-items:center}
+.lb img{max-width:100%;max-height:78vh;border-radius:12px;background:#fff;object-fit:contain}
+.lb figcaption{color:#fff;text-align:center;font-weight:700;font-size:17px;display:flex;flex-direction:column;gap:4px}
+.lb figcaption span{opacity:.7;font-size:14px}
+.lb-x,.lb-n{position:absolute;border:2.5px solid #fff;background:rgba(255,255,255,.12);color:#fff;border-radius:50%;width:52px;height:52px;font-size:28px;line-height:1;display:grid;place-items:center}
+.lb-x{top:16px;right:16px;font-size:22px}
+.lb-p{left:16px;top:50%;margin-top:-26px}.lb-f{right:16px;top:50%;margin-top:-26px}
+.lb-x:hover,.lb-n:hover{background:var(--sun);color:var(--ink);border-color:var(--sun)}
+@media (min-width:1400px){#view .sheet:has(.gal){grid-column:1/-1}}
+.pg-wrap{display:grid;grid-template-columns:260px minmax(0,1fr);gap:24px;align-items:start}
+.pg-side,.pg-main{display:flex;flex-direction:column;gap:12px;min-width:0}
+.pg-kids{display:flex;flex-direction:column;gap:8px}
+.pg-kid{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;background:#fff;border:2.5px solid var(--ink);border-radius:14px;padding:10px 12px;box-shadow:0 4px 0 var(--ink)}
+.pg-kid span{font-size:13.5px;color:var(--muted);font-weight:700}
+.pg-kid.on{background:var(--sun)}
+.pg-add{border-style:dashed;box-shadow:none;font-weight:800;color:var(--accent)}
+.pg-tools{display:flex;flex-direction:column;gap:8px}.pg-tools .btn{justify-content:center;font-size:15px;padding:9px 12px;cursor:pointer}
+.pg-head{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start}
+.pg-head h3{font-size:24px;color:var(--accent)}
+.pg-main h4{font:600 16px var(--display);margin:6px 0 0}
+.pg-note{background:#fff3c4;border:2px dashed var(--ink);border-radius:12px;padding:8px 12px;font-weight:700;margin:0}
+.pg-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pg-kpis div{background:var(--accent-soft);border:2.5px solid var(--ink);border-radius:16px;padding:12px 14px;display:flex;flex-direction:column}
+.pg-kpis span{font-size:13.5px;font-weight:700;color:var(--muted)}
+.pg-kpis b{font:800 30px var(--display);font-variant-numeric:tabular-nums}
+.pg-kpis b.up,.pg-delta.up{color:var(--good)}.pg-kpis b.down,.pg-delta.down{color:var(--bad)}
+.pg-chart{background:#fff;border:2.5px solid var(--ink);border-radius:16px;padding:8px}
+.pg-chart svg{width:100%;height:auto;display:block}
+.pg-grid{stroke:#d9dcef;stroke-width:1}.pg-ax{fill:var(--muted);font:700 12px var(--body)}
+.pg-area{fill:var(--accent);opacity:.14}.pg-line{fill:none;stroke:var(--accent);stroke-width:4;stroke-linejoin:round;stroke-linecap:round}
+.pg-dot{fill:#fff;stroke:var(--accent);stroke-width:3}.pg-dot.last{fill:var(--sun);stroke:var(--ink)}
+.pg-val{fill:var(--ink);font:800 13px var(--body)}
+.pg-bars{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.pg-bar{background:#fff;border:2px solid var(--ink);border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.pg-bn{display:flex;justify-content:space-between;gap:8px;align-items:baseline}.pg-bn b{font-size:15px}
+.pg-delta{font-size:13px;font-weight:800;color:var(--muted);white-space:nowrap}
+.pg-track{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.pg-seg{height:14px;border-radius:7px;background:#e6e8f4;border:1.5px solid #c9cde3}
+.pg-seg.was{background:#cfc6ff}.pg-seg.on{background:var(--accent);border-color:var(--ink)}
+.pg-lvl{font-size:13.5px;font-weight:700;color:var(--muted)}
+.pg-tbl{border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;min-width:720px}
+.pg-tbl th,.pg-tbl td{border:1.5px solid #c9cde3;padding:6px 8px;text-align:center}
+.pg-tbl th{background:var(--accent-soft);font-size:12.5px;line-height:1.2}
+.pg-tbl td .btn{padding:4px 10px;font-size:13px;box-shadow:0 2px 0 var(--ink)}
+.pg-mini{border:2px solid var(--ink);background:#fff;border-radius:10px;padding:4px 10px;font-weight:700;font-size:13px;margin-right:4px}
+.pg-notes{margin:0}
+.pg-form{display:flex;flex-direction:column;gap:12px}
+.pg-f2{display:flex;flex-direction:column;gap:5px;max-width:420px}
+.pg-f2 label{font-weight:800;font-size:15px;color:var(--muted)}
+.pg-f2 input,.pg-f2 textarea{font:inherit;border:2.5px solid var(--ink);border-radius:12px;padding:9px 12px;background:#fff;color:var(--ink)}
+.pg-row{display:grid;grid-template-columns:220px auto 1fr;gap:12px;align-items:center;background:#fff;border:2px solid #c9cde3;border-radius:14px;padding:8px 12px}
+.pg-scale{display:flex;gap:6px}
+.pg-scale button{width:42px;height:42px;border-radius:12px;border:2.5px solid var(--ink);background:#fff;font:800 17px var(--display);box-shadow:0 3px 0 var(--ink)}
+.pg-scale button.on{background:var(--accent);color:#fff}
+.pg-lab{font-weight:700;color:var(--muted);font-size:14px}
+.pg-msg{color:var(--bad)}
+@media (max-width:900px){.pg-wrap{grid-template-columns:1fr}.pg-row{grid-template-columns:1fr}.pg-kpis{grid-template-columns:1fr}}
+@media (min-width:1400px){#view .sheet.pg{grid-column:1/-1}}
 </style>
 </head>
 <body>
@@ -771,6 +841,95 @@ function artic3dPage(){
       el('div',{class:'a3right'},title,desc,cap,el('div',{class:'row'},startBtn),note,el('h3',null,'Жаттығуды таңда'),list))),
     plain('Қалай жұмыс істейміз',ul(['Бала айнаның алдында отырады, экрандағы кейіпкерге қарап, қимылды қайталайды.','Алдымен жаттығуды диктормен бірге тыңдаңыз, сосын бес рет қайталаңыз немесе бес санағанша ұстап тұрыңыз.','«Қырынан» және «Жақындату» батырмалары тіл мен еріннің қалпын анық көрсетеді.','Күніне 5–7 жаттығу жеткілікті. Бала шаршаса, үзіліс жасаңыз.']))];
 }
+/* ===== Баланың даму картасы: прогресті шкала бойынша бақылау =====
+   Деректер тек осы құрылғыдағы браузерде (localStorage) сақталады, ешқайда жіберілмейді. */
+const PG_AREAS=[
+  ['art','Артикуляциялық моторика'],['breath','Сөйлеу тынысы'],['sound','Дыбыс айтылуы'],['phon','Фонематикалық есту'],
+  ['lex','Сөздік қор'],['gram','Грамматикалық құрылым'],['coh','Байланыстырып сөйлеу'],['fine','Ұсақ моторика']];
+const PG_LV=['','Қалыптаспаған','Төмен','Орташа','Жақсы','Жоғары'];
+const PG_KEY='sb-progress';
+function pgLoad(){try{const d=JSON.parse(localStorage.getItem(PG_KEY)||'null');if(d&&Array.isArray(d.kids))return d;}catch(e){}return null;}
+function pgSample(){const mk=(date,v)=>({date,s:Object.fromEntries(PG_AREAS.map(([k],i)=>[k,v[i]])),note:''});
+  return {kids:[{id:'sample',name:'Үлгі: Бала А.',year:'2019',concl:'Үлгі деректер',sample:true,ev:[mk('2026-09-15',[2,2,1,2,3,2,1,2]),mk('2026-10-15',[3,2,2,2,3,3,2,3]),mk('2026-11-15',[4,3,3,3,4,3,3,4])]}],sel:'sample'};}
+let PG=null,PG_OK=true;
+function pgSave(){try{localStorage.setItem(PG_KEY,JSON.stringify(PG));PG_OK=true;}catch(e){PG_OK=false;}}
+const pgAvg=e=>{const v=PG_AREAS.map(([k])=>+e.s[k]||0);return v.reduce((a,b)=>a+b,0)/v.length;};
+const pgPct=e=>Math.round((pgAvg(e)-1)/4*100);
+const pgDate=d=>{const [y,m,dd]=d.split('-');return dd+'.'+m+'.'+y;};
+
+function pgChart(kid){const ev=[...kid.ev].sort((a,b)=>a.date<b.date?-1:1),W=640,H=240,L=46,R=16,T=16,B=40,w=W-L-R,h=H-T-B;
+  if(!ev.length)return el('p',{class:'hint'},'Әзірге бағалау жоқ. «Жаңа бағалау» батырмасын басыңыз.');
+  const x=i=>L+(ev.length===1?w/2:i*w/(ev.length-1)),y=p=>T+h-(p/100)*h;
+  let g='';[0,25,50,75,100].forEach(p=>{g+=`<line x1="${L}" x2="${W-R}" y1="${y(p)}" y2="${y(p)}" class="pg-grid"/><text x="${L-8}" y="${y(p)+4}" text-anchor="end" class="pg-ax">${p}%</text>`;});
+  const pts=ev.map((e,i)=>[x(i),y(pgPct(e))]);
+  const line=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' ');
+  const area=line+` L${pts[pts.length-1][0].toFixed(1)} ${y(0)} L${pts[0][0].toFixed(1)} ${y(0)} Z`;
+  ev.forEach((e,i)=>{g+=`<text x="${x(i)}" y="${H-14}" text-anchor="middle" class="pg-ax">${pgDate(e.date).slice(0,5)}</text>`;});
+  pts.forEach((p,i)=>{const last=i===pts.length-1;g+=`<circle cx="${p[0]}" cy="${p[1]}" r="${last?7:5}" class="pg-dot${last?' last':''}"/><text x="${p[0]}" y="${p[1]-12}" text-anchor="middle" class="pg-val">${pgPct(ev[i])}%</text>`;});
+  return el('div',{class:'pg-chart',html:`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Жалпы даму деңгейінің өзгерісі"><path d="${area}" class="pg-area"/><path d="${line}" class="pg-line"/>${g}</svg>`});}
+
+function pgBars(kid){const ev=[...kid.ev].sort((a,b)=>a.date<b.date?-1:1);if(!ev.length)return null;const f=ev[0],l=ev[ev.length-1];
+  return el('div',{class:'pg-bars'},PG_AREAS.map(([k,n])=>{const a=+f.s[k]||0,b=+l.s[k]||0,d=b-a;
+    return el('div',{class:'pg-bar'},el('div',{class:'pg-bn'},el('b',null,n),el('span',{class:'pg-delta '+(d>0?'up':d<0?'down':'')},d>0?'▲ +'+d:d<0?'▼ '+d:'өзгеріссіз')),
+      el('div',{class:'pg-track','aria-label':n+': '+PG_LV[b]},[1,2,3,4,5].map(i=>el('span',{class:'pg-seg'+(i<=b?' on':'')+(i<=a&&ev.length>1?' was':'')}))),
+      el('div',{class:'pg-lvl'},PG_LV[b]+' ('+b+'/5)'));}));}
+
+function pgForm(kid,onDone,edit){const today=new Date().toISOString().slice(0,10);const cur=edit?{...edit.s}:{};
+  if(!edit&&kid.ev.length){const last=[...kid.ev].sort((a,b)=>a.date<b.date?-1:1).pop();Object.assign(cur,last.s);}
+  const date=el('input',{type:'date',id:'pg-date',value:edit?edit.date:today}),note=el('textarea',{id:'pg-note',rows:2,placeholder:'Мысалы: «Ш» дыбысы буында қойылды'});note.value=edit?edit.note||'':'';
+  const rows=PG_AREAS.map(([k,n])=>{const grp=el('div',{class:'pg-scale',role:'radiogroup','aria-label':n});
+    [1,2,3,4,5].forEach(v=>grp.append(el('button',{type:'button',role:'radio','aria-checked':String(cur[k]===v),class:cur[k]===v?'on':'',title:PG_LV[v],onclick(){cur[k]=v;grp.querySelectorAll('button').forEach((b,i)=>{b.classList.toggle('on',i+1===v);b.setAttribute('aria-checked',String(i+1===v));});lab.textContent=PG_LV[v];}},String(v))));
+    const lab=el('span',{class:'pg-lab'},cur[k]?PG_LV[cur[k]]:'бағаланбады');return el('div',{class:'pg-row'},el('b',null,n),grp,lab);});
+  const msg=el('b',{class:'pg-msg','aria-live':'polite'},'');
+  return el('form',{class:'pg-form',onsubmit(e){e.preventDefault();const miss=PG_AREAS.filter(([k])=>!cur[k]);if(miss.length){msg.textContent='Барлық бағытты бағалаңыз: '+miss.map(m=>m[1]).join(', ')+'.';return;}
+      const rec={date:date.value||today,s:cur,note:note.value.trim()};if(edit)Object.assign(edit,rec);else kid.ev.push(rec);onDone();}},
+    el('div',{class:'pg-f2'},el('label',{for:'pg-date'},'Бағалау күні'),date),
+    el('p',{class:'hint'},'1 — қалыптаспаған, 2 — төмен, 3 — орташа, 4 — жақсы, 5 — жоғары. Алдыңғы бағалаудың нәтижесі алдын ала белгіленген.'),
+    rows,el('div',{class:'pg-f2'},el('label',{for:'pg-note'},'Ескертпе (міндетті емес)'),note),
+    el('div',{class:'row'},el('button',{class:'btn',type:'submit'},edit?'Өзгерісті сақтау':'Бағалауды сақтау'),el('button',{class:'btn ghost',type:'button',onclick:onDone},'Болдырмау'),msg));}
+
+function progressPage(){PG=pgLoad()||pgSample();const host=el('div',{class:'pg-wrap'});
+  function confirmBtn(label,ask,fn){let armed=false;const b=el('button',{class:'btn ghost',type:'button',onclick(){if(!armed){armed=true;b.textContent=ask;setTimeout(()=>{armed=false;b.textContent=label;},4000);return;}fn();}},label);return b;}
+  function render(mode,arg){pgSave();host.innerHTML='';const kid=PG.kids.find(k=>k.id===PG.sel)||PG.kids[0];if(kid)PG.sel=kid.id;
+    const list=el('div',{class:'pg-kids'},PG.kids.map(k=>{const ev=[...k.ev].sort((a,b)=>a.date<b.date?-1:1),last=ev[ev.length-1];
+      return el('button',{type:'button',class:'pg-kid'+(k.id===PG.sel?' on':''),onclick(){PG.sel=k.id;render();}},el('b',null,k.name),el('span',null,last?pgPct(last)+'% · '+ev.length+' бағалау':'бағалау жоқ'));}),
+      el('button',{type:'button',class:'pg-kid pg-add',onclick(){render('kid');}},'+ Бала қосу'));
+    const side=el('aside',{class:'pg-side'},el('h3',null,'Балалар'),list,
+      el('div',{class:'pg-tools'},el('button',{class:'btn ghost',type:'button',onclick:exportData},'Сақтық көшірме жүктеу'),
+        el('label',{class:'btn ghost',for:'pg-import'},'Көшірмені қалпына келтіру'),el('input',{type:'file',id:'pg-import',accept:'.json,application/json',hidden:true,onchange:importData})),
+      el('p',{class:'hint'},PG_OK?'Деректер тек осы құрылғыдағы браузерде сақталады және ешкімге жіберілмейді. Басқа компьютерге көшіру үшін сақтық көшірмені пайдаланыңыз.':'Бұл браузер деректерді сақтауға рұқсат бермеді: бет жабылса, енгізгендер жоғалады. Сақтық көшірме жүктеп алыңыз.'));
+    let main;
+    if(mode==='kid'){const f={};const inp=(id,l,ph)=>{const i=el('input',{id,type:'text',placeholder:ph||''});if(arg&&arg[id.slice(3)])i.value=arg[id.slice(3)];f[id]=i;return el('div',{class:'pg-f2'},el('label',{for:id},l),i);};
+      main=el('form',{class:'pg-main pg-form',onsubmit(e){e.preventDefault();const name=f['pk-name'].value.trim();if(!name){f['pk-name'].focus();return;}
+          if(arg){arg.name=name;arg.year=f['pk-year'].value.trim();arg.concl=f['pk-concl'].value.trim();}
+          else{const k={id:'k'+Date.now(),name,year:f['pk-year'].value.trim(),concl:f['pk-concl'].value.trim(),ev:[]};PG.kids.push(k);PG.sel=k.id;}render(arg?null:'ev');}},
+        el('h3',null,arg?'Баланың мәліметін өзгерту':'Жаңа бала'),
+        inp('pk-name','Аты немесе коды','Мысалы: Айша Б. немесе №3'),inp('pk-year','Туған жылы (міндетті емес)','2019'),inp('pk-concl','Логопедиялық қорытынды (міндетті емес)',''),
+        el('p',{class:'hint'},'Құпиялылық үшін толық аты-жөнінің орнына аты мен тегінің бас әрпін немесе кодын жазуға болады.'),
+        el('div',{class:'row'},el('button',{class:'btn',type:'submit'},'Сақтау'),el('button',{class:'btn ghost',type:'button',onclick(){render();}},'Болдырмау')));}
+    else if(!kid){main=el('div',{class:'pg-main'},el('p',null,'Әзірге бала қосылмаған. Сол жақтағы «Бала қосу» батырмасын басыңыз.'));}
+    else if(mode==='ev'||mode==='edit'){main=el('div',{class:'pg-main'},el('h3',null,kid.name+': '+(mode==='edit'?'бағалауды өзгерту':'жаңа бағалау')),pgForm(kid,()=>render(),mode==='edit'?arg:null));}
+    else{const ev=[...kid.ev].sort((a,b)=>a.date<b.date?-1:1),f=ev[0],l=ev[ev.length-1];
+      main=el('div',{class:'pg-main'},
+        el('div',{class:'pg-head'},el('div',null,el('h3',null,kid.name),el('p',{class:'hint'},[kid.year&&('Туған жылы: '+kid.year),kid.concl&&('Қорытынды: '+kid.concl)].filter(Boolean).join(' · ')||'Қосымша мәлімет жоқ')),
+          el('div',{class:'row'},el('button',{class:'btn',type:'button',onclick(){render('ev');}},'+ Жаңа бағалау'),el('button',{class:'btn ghost',type:'button',onclick(){render('kid',kid);}},'Өзгерту'),
+            confirmBtn(kid.sample?'Үлгіні өшіру':'Баланы өшіру','Растау үшін қайта басыңыз',()=>{PG.kids=PG.kids.filter(k=>k!==kid);PG.sel=PG.kids[0]&&PG.kids[0].id;render();}))),
+        kid.sample&&el('p',{class:'pg-note'},'Бұл ойдан алынған үлгі. Беттің қалай жұмыс істейтінін көрсетеді. Өз балаңызды қосып, үлгіні өшіріп тастаңыз.'),
+        l&&el('div',{class:'pg-kpis'},el('div',null,el('span',null,'Қазіргі деңгей'),el('b',null,pgPct(l)+'%')),el('div',null,el('span',null,'Алғашқы бағалаудан бері'),el('b',{class:pgPct(l)-pgPct(f)>=0?'up':'down'},(pgPct(l)-pgPct(f)>=0?'+':'')+(pgPct(l)-pgPct(f))+'%')),el('div',null,el('span',null,'Бағалау саны'),el('b',null,String(ev.length)))),
+        el('h4',null,'Жалпы даму деңгейі'),pgChart(kid),
+        ev.length&&el('h4',null,ev.length>1?'Бағыттар бойынша: алғашқы бағалау (ашық түс) және соңғы бағалау':'Бағыттар бойынша'),pgBars(kid),
+        ev.length&&el('h4',null,'Бағалаулар тарихы'),
+        ev.length&&el('div',{class:'tbl'},el('table',{class:'pg-tbl'},el('tr',null,el('th',null,'Күні'),PG_AREAS.map(([,n])=>el('th',null,n)),el('th',null,'Жалпы'),el('th',null,'')),
+          [...ev].reverse().map(e=>el('tr',null,el('td',null,pgDate(e.date)),PG_AREAS.map(([k])=>el('td',null,String(e.s[k]))),el('td',null,el('b',null,pgPct(e)+'%')),
+            el('td',null,el('button',{class:'pg-mini',type:'button',onclick(){render('edit',e);}},'Өзгерту'),confirmBtn('Өшіру','Растау',()=>{kid.ev=kid.ev.filter(x=>x!==e);render();}))))),
+          ev.some(e=>e.note)&&el('ul',{class:'pg-notes'},[...ev].reverse().filter(e=>e.note).map(e=>el('li',null,el('b',null,pgDate(e.date)+': '),e.note)))));}
+    host.append(side,main);}
+  function exportData(){try{const blob=new Blob([JSON.stringify(PG,null,1)],{type:'application/json'});const a=el('a',{href:URL.createObjectURL(blob),download:'damu-kartasy-'+new Date().toISOString().slice(0,10)+'.json'});document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);}catch(e){}}
+  function importData(e){const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!d||!Array.isArray(d.kids))throw 0;PG=d;render();}catch(_){host.prepend(el('p',{class:'pg-note'},'Бұл файл даму картасының сақтық көшірмесі емес.'));}};r.readAsText(f);}
+  render();
+  return [el('section',{class:'sheet pg'},host),
+    plain('Қалай қолданамыз',ul(['Баланы қосып, алғашқы диагностика нәтижесін сегіз бағыт бойынша 1-ден 5-ке дейін бағалаңыз.','Әр айдың соңында немесе тоқсан сайын қайта бағалаңыз. График пен шкала баланың ілгерілеуін бірден көрсетеді.','Ата-аналармен кездесуде осы бетті көрсетіп, нәтижені бірге талқылауға болады.','Деректер тек осы құрылғыда сақталады. Компьютер ауыстырсаңыз немесе браузер тазартылса, жоғалмас үшін сақтық көшірмені жүктеп алып отырыңыз.']))];
+}
 /* ===== Үлгі (шаблон) режимі: әр қолданушы өз мәліметін өзі толтырады ===== */
 const TPL=!!window.SB_TEMPLATE;
 let PROF={};try{PROF=JSON.parse(localStorage.getItem('sb-profile')||'{}')||{};}catch(e){PROF={};}
@@ -859,7 +1018,7 @@ function voiceGame(){return game('Дауыс өлшегіш','Дыбысты т�
   g.body.append(faces,big,tank,el('div',{class:'row',style:'justify-content:center'},startBtn,hold),note);});}
 
 /* ===== Беттер ===== */
-const GROUPS=[['Таныстыру',['home','kirispe','piramida','ozim']],['Лексикалық тақырыптар',['dene','uy-zhanuarlary','zhemister','kokonister','ydystar','kiimder']],['Жыл мезгілдері',['zhaz','kuz','qys','koktem']],['Дыбыс, түс, қимыл',['tuster','artik3d','dybystar','neiro']],['Ұғымдар',['antonimder','kop-az','ulken-kishi']],['Қосымшалар',['sozdik-1','sozdik-2','buyndar']],['Педагог пен ата-ана',['ata-analarga','galereya','pikirler']]];
+const GROUPS=[['Таныстыру',['home','kirispe','piramida','ozim']],['Лексикалық тақырыптар',['dene','uy-zhanuarlary','zhemister','kokonister','ydystar','kiimder']],['Жыл мезгілдері',['zhaz','kuz','qys','koktem']],['Дыбыс, түс, қимыл',['tuster','artik3d','dybystar','neiro']],['Ұғымдар',['antonimder','kop-az','ulken-kishi']],['Қосымшалар',['sozdik-1','sozdik-2','buyndar']],['Педагог пен ата-ана',['damu','ata-analarga','galereya','pikirler']]];
 const PAGES={
  home:{title:'Бастапқы бет',icon:'🏠'},
  kirispe:{title:'Кіріспе',icon:'📘',lead:'Бұл жинақ кімге арналған және онымен қалай жұмыс істеу керек.'},
@@ -875,13 +1034,14 @@ const PAGES={
  'sozdik-1':{title:'1-қосымша. Сөздік қорды дамыту',icon:'📚',lead:'Тақырыптық суретті сөздік: көлік, жабайы жануарлар, құстар, ойыншықтар, отбасы.'},
  'sozdik-2':{title:'2-қосымша. Сөздік қорды дамыту',icon:'🧩',lead:'Жалпылау, артығын табу, көпше түр және жұмбақтар.'},
  'ata-analarga':{title:'Ата-аналарға кеңес',icon:'👪',lead:'Үйде баламен қалай жаттығу керек және маманға қашан жүгінген жөн.'},
+ damu:{title:'Баланың даму картасы',short:'Даму картасы',icon:'📈',lead:'Әр баланың сөйлеу тілі мен моторикасын шкала бойынша бағалап, ілгерілеуін график арқылы бақылаймыз.'},
  galereya:{title:'Галерея',icon:'📷',lead:'Сабақ сәттері, логопедиялық кабинет және жұмыста қолданылатын құралдар.'},
  pikirler:{title:'Әріптестер пікірі',icon:'💬',lead:'Сайт пен тапсырмалар туралы әріптестер мен ата-аналардың пікірлері.'},
  buyndar:{title:'Буындап оқып үйрен',icon:'📖',lead:'Буын кестесімен оқимыз, буындардан сөз құраймыз.'}
 };
 Object.entries(TOPICS).forEach(([k,v])=>PAGES[k]={title:v.title,icon:v.icon,lead:v.lead});
 Object.entries(SEASONS).forEach(([k,v])=>PAGES[k]={title:v.title,icon:v.icon,lead:v.lead});
-if(TPL){GROUPS[GROUPS.length-1]=['Ата-аналарға',['ata-analarga']];PAGES.ozim.lead='Өз мәліметіңізді осы жерде толтырыңыз. Барлық жол ерікті: бос қалдырған жол сайтта көрсетілмейді.';}
+if(TPL){GROUPS[GROUPS.length-1]=['Педагог пен ата-ана',['damu','ata-analarga']];PAGES.ozim.lead='Өз мәліметіңізді осы жерде толтырыңыз. Барлық жол ерікті: бос қалдырған жол сайтта көрсетілмейді.';}
 const ORDER=GROUPS.flatMap(g=>g[1]);
 const link=id=>el('a',{href:'#'+id},PAGES[id].short||PAGES[id].title);
 const ph=(label,text)=>el('div',{class:'ph'},el('small',null,'Кейін толтырылады'),text||label);
@@ -915,9 +1075,11 @@ R.piramida=()=>{const info=el('div',{class:'sheet',style:'background:var(--soft)
 R.ozim=()=>[el('section',{class:'sheet'},el('div',{class:'about'},el('img',{class:'photo',src:'img/photo.jpg',alt:'Педагог-логопед Какимуллаева Арайлым Ихласовна'}),
   el('dl',null,[['Аты-жөні','=Какимуллаева Арайлым Ихласовна'],['Лауазымы','=педагог-логопед'],['Жұмыс орны','=Батыс Қазақстан облысы, Қаратөбе ауданы, Егіндікөл жалпы орта білім беретін мектебі'],['Білімі','=Қ. Жұбанов атындағы Ақтөбе өңірлік мемлекеттік университеті (2016), «5В010500 – Дефектология» мамандығы бойынша білім бакалавры'],['Еңбек өтілі','=9 жыл'],['Біліктілік санаты','=педагог-модератор'],['Байланыс','@wa']].flatMap(([k,v])=>[el('dt',null,k),el('dd',null,v==='@wa'?el('div',{class:'row'},el('b',null,'+7 777 184 0094'),WA()):v[0]==='='?el('b',null,v.slice(1)):ph('',v))])))),
   plain('Педагогикалық ұстанымым',el('blockquote',{class:'credo'},'«Әр баланың мүмкіндігін тану, сөйлеу тілін дамыту, кішкентай жетістігін үлкен жеңіске айналдыру – менің кәсіби ұстанымым».')),
-  plain('Жетістіктерім',el('div',{class:'ach'},
+  plain('Жетістіктерім',el('div',{class:'ach'},el('p',null,'Дипломдар мен сертификаттардың суреттері ',el('a',{href:'#galereya'},'Галерея'),' бөлімінде.'),
     el('h3',null,'Кәсіби іс-тәжірибесі мен жетістіктері'),
-    el('ul',{class:'achl'},[['Облыстық','«Педагогикалық идеялар фестивалі» конкурсы, «Психолог сандықшасы» бөлімі','III орын'],['Облыстық','«Білім баршаға: ерекше білім беруді қолдау тәжірибесі» арнайы мамандар секциясында іс-тәжірибе бөліскені үшін','Сертификат'],['Аудандық','«Педагогикалық идеялар фестивалі» конкурсы, «Психолог сандықшасы» бөлімі','I орын'],['Аудандық','«Ерекше білім беруге қажеттіліктері бар балаларды оқыту, тәрбиелеу және дамыту жұмыстары» семинар-практикумында іс-тәжірибе бөліскені үшін','Сертификат']].map(([lv,t,r])=>el('li',null,el('span',{class:'lvl-tag'},lv),el('span',null,t),el('b',{class:'place'},r)))),
+    el('ul',{class:'achl'},[['Облыстық','«Педагогикалық идеялар фестивалі» конкурсы, «Психолог сандықшасы» бөлімі','III орын'],['Облыстық','«Білім баршаға: ерекше білім беруді қолдау тәжірибесі» арнайы мамандар секциясында іс-тәжірибе бөліскені үшін','Сертификат'],['Аудандық','«Педагогикалық идеялар фестивалі» конкурсы, «Психолог сандықшасы» бөлімі','I орын'],['Аудандық','«Ерекше білім беруге қажеттіліктері бар балаларды оқыту, тәрбиелеу және дамыту жұмыстары» семинар-практикумында іс-тәжірибе бөліскені үшін','Сертификат'],['Аудандық','Білім беру жүйесін дамыту ісіне шығармашылықпен үлес қосқаны үшін Қаратөбе ауданы әкімінің хаты (2025)','Алғыс хат'],['Аудандық','«Жыл үздігі – 2025» жастар премиясы, «Үздік жас ұстаз» аталымы','Үміткер'],['Аудандық','Логопед ұстаздар арасындағы «Үздік бейне сабақ» байқауы','III орын'],['Аудандық','Семинар спикері: «ЖСТД балалардың ойлау қабілетін арттыратын әдіс-тәсілдер мен ұсақ моторика әлемі» (2022), «Оқушылардың оқу-таным қызметін ұйымдастыру әдістері» (2023)','Спикер'],['Республикалық','«Білім айнасы» журналында «Менің мамандығым – менің келешегім» эссесі жарияланды (2025)','Жарияланым'],['Республикалық','Шәкірттерін «Мәнерлеп оқу» байқауына қатыстырып, білім саласының дамуына қосқан үлесі үшін («Мың бала»)','Диплом'],['Республикалық','Қаржы сауаттылығы бойынша республикалық диктант','Қатысушы']].map(([lv,t,r])=>el('li',null,el('span',{class:'lvl-tag'},lv),el('span',null,t),el('b',{class:'place'},r)))),
+    el('h3',null,'Біліктілікті арттыру курстары («KEMEL» кәсіби даму орталығы)'),
+    el('ul',{class:'achl'},[['2026','«Инклюзивті білім беру жағдайында психологиялық-педагогикалық қолдау қызметін ұйымдастыру: командалық тәсіл және практикалық құралдар»'],['2026','«Педагог-логопедтің кәсіби қызметін ұйымдастыру: сөйлеу тілінің даму деңгейін бағалау, түзете-дамыту жұмысы және нәтижелерді талдау»'],['2026','«Психологиялық-педагогикалық қолдау қызметінде педагог-логопедтің кәсіби іс-әрекетінің мазмұны мен бағыттары»']].map(([y,t])=>el('li',null,el('span',{class:'lvl-tag'},y),el('span',null,t),el('b',{class:'place'},'80 сағат')))),
     el('h3',null,'Оқушыларының жетістіктері'),
     el('p',null,'Жетекшілік және психологиялық қолдау жұмыстарының нәтижесінде оқушылар аудандық «Шексіз әлем» байқауында жүлделі орындарға ие болды:'),
     el('ul',{class:'achl'},[['Нұрасыл С.','«Шебер қол өнер көзі» номинациясы','аудандық I орын, облыстық I орын'],['Нұртілек Ғ.','«Жасыл әлем жыры» номинациясы','II орын'],['Зергүл А.','«Шексіз қиялдағы туған жер» номинациясы','III орын']].map(([nm,t,r])=>el('li',null,el('span',{class:'lvl-tag'},nm),el('span',null,t),el('b',{class:'place'},r))))))];
@@ -946,7 +1108,7 @@ function ozimTpl(){const shown=PFIELDS.filter(([k])=>PROF[k]&&k!=='wa');const ms
 function topicPage(k){const T=TOPICS[k];return [articBlock(T.artic),breathBlock(T.breath),cardsBlock('Суретке қарап ата',T.items),revealBlock(T.items),
   findGame(T.askTitle||'Сұраққа суретпен жауап бер','Сұрақты тыңда да, дұрыс суретті көрсет.',T.ask),qaBlock(T.qa),chantBlock(T.chant),
   findGame('Көрсет','Аталған суретті тауып бас.',T.items,w=>'«'+cap(w)+'» қайда?'),nameGame(T.items),shadowGame(T.items),memoryGame(T.items),T.sort&&sortGame(T.sort.title,T.sort.bins)];}
-R.artik3d=artic3dPage;
+R.artik3d=artic3dPage;R.damu=progressPage;
 if(TPL){R.home=homeTpl;R.ozim=ozimTpl;}
 Object.keys(TOPICS).forEach(k=>R[k]=()=>topicPage(k));
 function seasonPage(k){const S=SEASONS[k];const all=SEASON_KEYS.flatMap(s=>SEASONS[s].signs.map(x=>[x[0],x[1],s]));
@@ -1037,7 +1199,29 @@ R['ata-analarga']=()=>[
   plain('Күнделікті өмірде сөйлеуді қалай дамытамыз',ul(['Не істеп жатқаныңызды айтып отырыңыз: «Мен сәбіз турап жатырмын. Сәбіз қызғылт сары, қатты».','Баланың сөзін кеңейтіп қайталаңыз. Бала «машина» десе, сіз «Иә, қызыл машина кетіп барады» деңіз.','Қате айтқан сөзін ұрыспай, дұрыс үлгісін анық айтып беріңіз. «Дұрыс айт» деп қайта-қайта талап етпеңіз.','Күн сайын кітап оқып, сурет бойынша сұрақ қойыңыз: «Бұл кім? Ол не істеп жатыр?»','Ермексаз, мозаика, моншақ тізу, түйме салу сияқты саусақ жұмыстарына уақыт бөліңіз.','Экран алдындағы уақытты шектеңіз. Мультфильм тірі сөйлесуді алмастыра алмайды.'])),
   plain('Сайтпен апталық жұмыс үлгісі',el('p',{class:'hint'},'Әр күні артикуляциялық жаттығудан бастаймыз, содан кейін сол күннің тапсырмасына өтеміз.'),el('div',{class:'ex-grid'},[['Дүйсенбі','Лексикалық тақырып: карточкаларды атау, «Мынау не?»'],['Сейсенбі','Сол тақырыптың ойындары: көрсет, көлеңкесін тап, жұбын тап'],['Сәрсенбі','Дыбыс: буындар мен сөздер'],['Бейсенбі','Нейрожаттығу және «үлкен-кіші», «көп-аз» ұғымдары'],['Жұма','Дыбыс: сөйлемдер, таза сөйлеу, мәтін'],['Демалыс','Өткенді қайталау, жұмбақтар, буындап оқу']].map(([d,t])=>el('div',{class:'ex'},el('h3',null,d),el('p',null,t))))),
   plain('Маманмен қашан кеңескен жөн',ul(['Бала екі жасқа қарай жеке сөздерді айтпаса.','Үш жасқа қарай екі-үш сөзден сөйлем құрамаса.','Төрт-бес жастан кейін де дыбыстарды тастап кетсе немесе басқа дыбыспен алмастырса.','Сөйлегенде кідіріп, дыбысты немесе буынды қайталай берсе.','Айтылған сөзді түсінбейтіндей көрінсе немесе атын атағанда қарамаса.']),el('p',{class:'hint'},'Бұл белгілер диагноз емес. Олардың бірі байқалса, логопедке немесе дәрігерге көрініп, кеңес алыңыз.'))];
-R.galereya=()=>[plain('Фотосуреттер',el('p',{class:'hint'},'Суреттер жіберілген соң осы жерге орналастырылады.'),el('div',{class:'gal'},['Сабақ сәті','Сабақ сәті','Логопедиялық кабинет','Артикуляциялық жаттығу','Нейрожаттығу','Дидактикалық құралдар','Ата-аналармен жұмыс','Ашық сабақ'].map(t=>el('div',{class:'ph gal-ph'},el('div',null,el('small',null,'Кейін толтырылады'),t)))))];
+const GAL=[
+ ['Логопедиялық кабинет','photo',[['kab-1','Кабинет: түзету-дамыту сабақтарына арналған орын'],['kab-2','Кабинет: жеке жұмыс аймағы']]],
+ ['Сабақ сәттері','photo',[['sb-jeke','Жеке түзету сабағы: түс пен пішінді ажырату'],['sb-qum','Құм терапиясы: жарық үстелде сурет салу'],['sb-mozaika','Ұсақ моторика: мозаика жинау']]],
+ ['Бейнежазбалар','video',[['v1','Құм терапиясы'],['v2','«Л» дыбысын қою'],['v3','Баламен жеке жұмыс'],['v4','«Түсінемін және қолдаймын» тренинг-сағаты']]],
+ ['Іс-шаралар мен семинарлар','photo',[['ev-seminar','Аудандық семинар-практикум: «Құжат пен тәжірибе үндестігі: логопедтің кәсіби тірегі» (2025)'],['ev-sahna','Іс-тәжірибе бөлісу: дидактикалық құралдарды таныстыру'],['ev-ural','Облыстық іс-шарада әдістемелік құралды таныстыру'],['ev-baghdarlama','Аудандық семинар бағдарламасы және сертификат'],['ev-seminar-top','Семинар-практикум қатысушылары'],['ev-trener','Тренинг қатысушылары'],['foto1','Аудандық «Педагогикалық идеялар фестивалі», I дәрежелі диплом'],['ev-diplom','Облыстық «Педагогикалық идеялар фестивалі», III дәрежелі диплом'],['foto2','Облыстық Тамыз кеңесі, сертификат тапсыру'],['foto3','Облыстық Тамыз кеңесі']]],
+ ['Оқушылардың жетістіктері','photo',[['st-gramota','Облыстық «Шексіз әлем» байқауы: «Шебер қол-өнер көзі», I орын (2026)'],['st-shexiz','Аудандық «Шексіз әлем» байқауының жүлдегерлері (2025)']]],
+ ['Марапаттар мен сертификаттар','doc',[['dip-aud-1','Аудандық «Педагогикалық идеялар фестивалі», I дәрежелі диплом (2025)'],['dip-obl-3','Облыстық «Педагогикалық идеялар фестивалі», III дәрежелі диплом (2025)'],['algys','Қаратөбе ауданы әкімінің Алғыс хаты (2025)'],['sert-obl','Облыстық Тамыз кеңесі, «Білім баршаға» секциясы, сертификат (2025)'],['sert-aud','Аудандық семинар-практикум, сертификат (2025)'],['kemel-1','Біліктілікті арттыру курсы, 80 сағат (2026)'],['kemel-2','Біліктілікті арттыру курсы, 80 сағат (2026)'],['kemel-3','Біліктілікті арттыру курсы, 80 сағат (2026)'],['halyk','Қаржы сауаттылығы бойынша республикалық диктант, қатысушы сертификаты']]],
+ ['Жарияланым: «Білім айнасы» журналы','doc',[['bilim-1','«Білім айнасы» журналы, 2025'],['bilim-2','Эссе: «Менің мамандығым – менің келешегім», 1-бет'],['bilim-3','Эссе, 2-бет'],['bilim-4','Эссе, 3-бет']]]
+];
+function lightbox(items,start){let i=start;const img=el('img',{alt:''}),cap=el('p',null,''),cnt=el('span',null,'');
+  const show=()=>{img.src='img/gal/'+items[i][0]+'.jpg';img.alt=items[i][1];cap.textContent=items[i][1];cnt.textContent=(i+1)+' / '+items.length;};
+  const close=()=>{box.remove();document.removeEventListener('keydown',key);};
+  const go=d=>{i=(i+d+items.length)%items.length;show();};
+  const key=e=>{if(e.key==='Escape')close();else if(e.key==='ArrowRight')go(1);else if(e.key==='ArrowLeft')go(-1);};
+  const box=el('div',{class:'lb',role:'dialog','aria-modal':'true','aria-label':'Суретті үлкейтіп көру',onclick(e){if(e.target===box)close();}},
+    el('button',{class:'lb-x',type:'button','aria-label':'Жабу',onclick:close},'✕'),
+    items.length>1&&el('button',{class:'lb-n lb-p',type:'button','aria-label':'Алдыңғы',onclick(){go(-1)}},'‹'),
+    el('figure',null,img,el('figcaption',null,cap,cnt)),
+    items.length>1&&el('button',{class:'lb-n lb-f',type:'button','aria-label':'Келесі',onclick(){go(1)}},'›'));
+  document.body.append(box);document.addEventListener('keydown',key);show();box.querySelector('.lb-x').focus();}
+R.galereya=()=>GAL.map(([t,kind,items])=>plain(t,el('div',{class:'gal gal-'+kind},items.map(([f,c],k)=>kind==='video'
+  ?el('figure',{class:'gv'},el('video',{src:'video/'+f+'.mp4',poster:'video/'+f+'.jpg',controls:true,preload:'none',playsinline:true}),el('figcaption',null,c))
+  :el('button',{class:'gi',type:'button','aria-label':'Үлкейту: '+c,onclick(){lightbox(items,k);}},el('img',{src:'img/gal/'+f+'.jpg',alt:c,loading:'lazy'}),el('span',null,c))))));
 R.pikirler=()=>[plain('Пікірлер',el('p',{class:'hint'},'Мұнда әріптестер мен ата-аналардың өз сөзімен жазған пікірлері аты-жөнімен бірге жарияланады.'),el('div',{class:'ex-grid'},[1,2,3].map(i=>el('div',{class:'ph'},el('small',null,'Кейін толтырылады'),'Пікір мәтіні, авторының аты-жөні және лауазымы')))),
   plain('Пікір қалдыру және байланыс',ph('','Пікір жинайтын сауалнаманың сілтемесі берілген соң осы жерде «Пікір қалдыру» батырмасы тұрады.'),el('div',{class:'row'},WA(),el('b',null,'+7 777 184 0094')))];
 
