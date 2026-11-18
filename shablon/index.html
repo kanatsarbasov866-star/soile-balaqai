@@ -472,6 +472,14 @@ table.syl td button:hover,table.syl td button.on{background:var(--sun)}
 .pg-msg{color:var(--bad)}
 @media (max-width:900px){.pg-wrap{grid-template-columns:1fr}.pg-row{grid-template-columns:1fr}.pg-kpis{grid-template-columns:1fr}}
 @media (min-width:1400px){#view .sheet.pg{grid-column:1/-1}}
+.avgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.av{margin:0;background:#fff;border:2.5px solid var(--ink);border-radius:20px;overflow:hidden;box-shadow:0 5px 0 var(--ink);display:flex;flex-direction:column}
+.av video{width:100%;aspect-ratio:1/1;display:block;background:#fff;object-fit:cover}
+.av figcaption{padding:12px 14px;display:flex;flex-direction:column;gap:8px;border-top:2.5px solid var(--ink);flex:1}
+.av h3{font-size:18px;color:var(--accent)}.av p{font-size:15.5px;max-width:none}
+.av .btn{font-size:15px;padding:7px 14px;margin-top:auto}
+.av.hl{outline:4px solid var(--sun);outline-offset:3px}
+@media (min-width:1400px){#view .sheet.avs{grid-column:1/-1}}
 </style>
 </head>
 <body>
@@ -690,157 +698,6 @@ const PYRAMID=[
  {n:'Сенсомоторлық даму',c:'#1f9d57',w:78,items:['дене қалпының тұрақтылығы','дененің екі жағын сезіну','қимылды жоспарлау','дене сызбасы','рефлекстердің жетілуі'],do:'Нейрожаттығулар: шеңбер, конус, текшемен маршруттар, екі қолды қатар жұмылдыратын саусақ жаттығулары.',links:['neiro','dene']},
  {n:'Сенсорлық жүйелер',c:'#0b8782',w:100,items:['тактильді (сипап сезу)','вестибулярлы (тепе-теңдік)','проприоцептивті (бұлшық ет сезімі)','көру','есту','иіс сезу','дәм сезу'],do:'Сабақтың басы: артикуляциялық және тыныс алу жаттығулары, массаж допшасы, тепе-теңдік кілемшесі, түстермен ойындар.',links:['tuster','neiro']}
 ];
-/* ===== 3D артикуляциялық жаттығулар ===== */
-const SB_BASE=(window.SB_TEMPLATE?'../':'');
-// Диктор жазбалары (audio/artic/<кілт>.mp3). Жазба қосылғанда кілті осы тізімге жазылады; жоқ болса браузердің қазақша дауысы қолданылады.
-const A3_AUDIO=['dual','tutik','kurek','ine','kese','sanyr','sagat','atken','tosap','at','tis','sylaq','baraban','n1','n2','n3','n4','n5','praise'];
-const A3_NUM=['бір','екі','үш','төрт','бес'];
-/* Әр жаттығу: n — атауы, say — диктор мәтіні, hold — ұстап тұру ма (true) әлде қайталау ма, pose(t) — t секундтағы қалып */
-const A3_EX={
-  dual:{say:'Күлімсіре. Жоғарғы және төменгі тістерің түгел көрінсін. Осылай ұстап тұр.',hold:true,pose:()=>({wide:.85,lipU:.06,lipL:.13})},
-  tutik:{say:'Тістеріңді түйістір. Ерніңді дөңгелетіп, алға қарай соз.',hold:true,pose:()=>({wide:-1,lipU:.05,lipL:.06,prot:1})},
-  kurek:{say:'Аузыңды аш. Жалпақ, бос тіліңді төменгі ерніңнің үстіне қой. Қимылдатпай ұстап тұр.',hold:true,pose:()=>({jaw:.45,wide:.3,out:.5,ty:0,flat:1})},
-  ine:{say:'Аузыңды аш. Тіліңді жіңішкертіп, алға қарай соз. Тілің инедей үшкір болсын.',hold:true,pose:()=>({jaw:.42,wide:.2,out:.66,ty:.3,flat:0})},
-  kese:{say:'Аузыңды кең аш. Жалпақ тіліңнің шеттерін жоғары көтеріп, кесе жаса.',hold:true,pose:()=>({jaw:.62,wide:.2,out:.38,ty:.35,flat:1,cup:1})},
-  sanyr:{say:'Тіліңді таңдайыңа жабыстыр да, аузыңды кең аш. Осылай ұстап тұр.',hold:true,pose:()=>({jaw:.85,wide:.3,out:-.25,ty:1.1,arch:1,flat:.9})},
-  sagat:{say:'Күлімсіреп, аузыңды аш. Тіліңнің ұшын бір езуден екінші езуге апар. Тық-тық, тық-тық.',per:2,pose:t=>({jaw:.42,wide:.55,out:.52,ty:.3,flat:.1,tx:Math.sin(Math.PI*t)})},
-  atken:{say:'Аузыңды кең аш. Тіліңнің ұшын кезекпен жоғарғы тістің артына, сосын төменгі тістің артына тигіз.',per:2,pose:t=>({jaw:.7,wide:.4,out:-.05,flat:.45,ty:Math.sin(Math.PI*t)*1.05,arch:Math.max(0,Math.sin(Math.PI*t))*.5})},
-  tosap:{say:'Аузыңды аш. Жалпақ тіліңмен жоғарғы ерніңді жоғарыдан төмен қарай жала. Тосап өте тәтті!',per:2,pose:t=>{const k=(t%2)/2,up=k<.5?k*2:2-k*2;return {jaw:.5,wide:.3,flat:1,out:.2+up*.22,ty:.55+up*.95};}},
-  at:{say:'Тіліңді таңдайыңа жабыстырып, тақылдат. Ат шауып келеді: тақ-тақ, тақ-тақ.',per:1,pose:t=>{const up=(t%1)<.55;return {jaw:.55,wide:.35,flat:.8,out:up?-.2:.0,ty:up?1.05:-.5,arch:up?1:0};}},
-  tis:{say:'Күлімсіреп, аузыңды аш. Тіліңнің ұшымен төменгі тістеріңнің ішкі жағын оңға-солға сипа.',per:2,pose:t=>({jaw:.5,wide:.65,out:-.02,ty:-.95,flat:.3,tx:Math.sin(Math.PI*t)*.75})},
-  sylaq:{say:'Аузыңды аш. Тіліңнің ұшымен таңдайыңды тістен тамаққа қарай және кері сипа.',per:2,pose:t=>({jaw:.7,wide:.35,flat:.5,ty:1.05,arch:.7,out:-.05-.4*(.5-.5*Math.cos(Math.PI*t))})},
-  baraban:{say:'Күлімсіреп, аузыңды аш. Тіл ұшымен жоғарғы тістің артын соқ: д-д-д, д-д-д.',per:1,pose:t=>({jaw:.55,wide:.6,flat:.4,out:-.04,ty:.8+.28*Math.abs(Math.sin(Math.PI*4*t)),arch:.35})}
-};
-const A3_ORDER=['dual','tutik','kurek','ine','kese','sanyr','sagat','atken','tosap','at','tis','sylaq','baraban'];
-let A3_PENDING=null; // басқа беттен «3D-де көру» басылғанда таңдалатын жаттығу
-
-function a3LoadThree(){if(window.THREE)return Promise.resolve();if(window.__a3p)return window.__a3p;
-  return window.__a3p=new Promise((ok,no)=>{const s=document.createElement('script');s.src=SB_BASE+'vendor/three.min.js';s.onload=ok;s.onerror=()=>no(new Error('three'));document.head.append(s);});}
-
-/* ---------- Диктор ---------- */
-const A3V={au:null,tok:0,
-  kk(){try{const vs=speechSynthesis.getVoices().filter(v=>/^kk/i.test(v.lang));return vs.find(v=>/aigul/i.test(v.name))||vs.find(v=>/natural|online|neural/i.test(v.name))||vs[0]||null;}catch(e){return null;}},
-  has(){return A3_AUDIO.length>0||!!this.kk();},
-  stop(){this.tok++;try{if(this.au)this.au.pause();}catch(e){}try{speechSynthesis.cancel();}catch(e){}},
-  // мәтінді айтады; аяқталғанда (немесе дауыс жоқ болса, мәтін ұзындығына сай үзілістен кейін) шешіледі
-  say(key,text){this.stop();const tok=this.tok;return new Promise(done=>{let fin=false;const end=()=>{if(!fin){fin=true;done(tok===this.tok);}};
-    const silent=()=>setTimeout(end,Math.min(9000,900+text.length*55));
-    if(A3_AUDIO.includes(key)){try{this.au=this.au||new Audio();this.au.src=SB_BASE+'audio/artic/'+key+'.mp3';this.au.onended=end;this.au.onerror=()=>this.tts(text,end,silent);this.au.play().catch(()=>this.tts(text,end,silent));return;}catch(e){}}
-    this.tts(text,end,silent);});},
-  tts(text,end,silent){const v=this.kk();if(!v){silent();return;}try{const u=new SpeechSynthesisUtterance(text);u.voice=v;u.lang=v.lang;u.rate=.92;u.pitch=1.05;u.onend=u.onerror=end;speechSynthesis.speak(u);setTimeout(end,Math.min(15000,2500+text.length*110));}catch(e){silent();}}
-};
-
-/* ---------- 3D сахна ---------- */
-function a3Scene(canvas){const T=THREE,MY=-.38;
-  const renderer=new T.WebGLRenderer({canvas,antialias:true,alpha:true});renderer.setPixelRatio(Math.min(2,window.devicePixelRatio||1));renderer.outputEncoding=T.sRGBEncoding;
-  const scene=new T.Scene(),cam=new T.PerspectiveCamera(30,1,.1,50);
-  scene.add(new T.HemisphereLight(0xffffff,0x8f86c9,.62));
-  const key=new T.DirectionalLight(0xfff1dc,.62);key.position.set(2.2,2.6,4);scene.add(key);
-  const rim=new T.DirectionalLight(0x9db8ff,.38);rim.position.set(-3,1.5,-2.5);scene.add(rim);
-  const fill=new T.PointLight(0xffe2ea,.16,8);fill.position.set(0,-.6,2.6);scene.add(fill);
-  const head=new T.Group();scene.add(head);
-  const std=(c,r,m)=>new T.MeshStandardMaterial({color:c,roughness:r==null?.6:r,metalness:m||0});
-  // тері: ауыз ойығы шейдерде «кесіледі», жиегі тегіс шығады
-  const U={uW:{value:.3},uLU:{value:.02},uLL:{value:.02},uMY:{value:MY}};
-  const skin=std(0xffd0a8,.62);
-  skin.onBeforeCompile=sh=>{Object.assign(sh.uniforms,U);
-    sh.vertexShader=sh.vertexShader.replace('#include <common>','#include <common>\nvarying vec3 vObj;').replace('#include <begin_vertex>','#include <begin_vertex>\nvObj=position;');
-    sh.fragmentShader=sh.fragmentShader.replace('#include <common>','#include <common>\nvarying vec3 vObj;uniform float uW,uLU,uLL,uMY;').replace('#include <clipping_planes_fragment>','#include <clipping_planes_fragment>\n{float u=vObj.x/uW;if(vObj.z>0.&&abs(u)<1.){float k=1.-u*u;if(vObj.y<uMY+uLU*k&&vObj.y>uMY-uLL*k)discard;}}');};
-  head.add(new T.Mesh(new T.SphereGeometry(1,96,72),skin));
-  // ауыз қуысы
-  const cav=new T.Mesh(new T.SphereGeometry(.955,48,36),new T.MeshBasicMaterial({color:0x571320,side:T.BackSide}));head.add(cav);
-  // шаш, құлақ, көз, мұрын, бет ұшы
-  const hairM=std(0x4a2b1c,.5);
-  const hair=new T.Mesh(new T.SphereGeometry(1.045,64,32,0,Math.PI*2,0,Math.PI*.46),hairM);hair.rotation.x=-.32;head.add(hair);
-  [[-.5,.93,.42,.3],[0,1.0,.5,.32],[.5,.93,.42,.3]].forEach(([x,y,z,r])=>{const m=new T.Mesh(new T.SphereGeometry(r,24,16),hairM);m.position.set(x,y,z);m.scale.set(1.2,.7,.9);head.add(m);});
-  [-1,1].forEach(s=>{const bun=new T.Mesh(new T.SphereGeometry(.3,24,16),hairM);bun.position.set(s*.98,.72,-.15);head.add(bun);
-    const ear=new T.Mesh(new T.SphereGeometry(.17,24,16),std(0xffc59a,.6));ear.position.set(s*.99,.05,0);ear.scale.set(.55,1,.8);head.add(ear);
-    const blush=new T.Mesh(new T.SphereGeometry(.17,24,12),new T.MeshStandardMaterial({color:0xff8a9a,roughness:.8,transparent:true,opacity:.42}));blush.position.set(s*.6,-.1,.76);blush.scale.set(1,.7,.25);head.add(blush);
-    const brow=new T.Mesh(new T.BoxGeometry(.24,.045,.05),hairM);brow.position.set(s*.37,.56,.86);brow.rotation.z=-s*.12;brow.rotation.y=s*.35;head.add(brow);});
-  const eyes=[-1,1].map(s=>{const g=new T.Group();g.position.set(s*.36,.3,.86);g.rotation.y=s*.12;
-    const w=new T.Mesh(new T.SphereGeometry(.15,32,24),std(0xffffff,.25));w.scale.set(1,1.12,.55);g.add(w);
-    const iris=new T.Mesh(new T.SphereGeometry(.085,24,16),std(0x3b2a20,.3));iris.position.z=.07;iris.scale.z=.5;g.add(iris);
-    const hl=new T.Mesh(new T.SphereGeometry(.026,12,8),new T.MeshBasicMaterial({color:0xffffff}));hl.position.set(.035,.04,.115);g.add(hl);head.add(g);return g;});
-  const nose=new T.Mesh(new T.SphereGeometry(.085,24,16),std(0xffbd92,.55));nose.position.set(0,.02,1.0);head.add(nose);
-  // мойын мен иық
-  const neck=new T.Mesh(new T.CylinderGeometry(.34,.4,.7,32),std(0xffc59a,.65));neck.position.y=-1.15;scene.add(neck);
-  const body=new T.Mesh(new T.SphereGeometry(1.25,48,32),std(0x5b3fe0,.55));body.position.y=-2.45;body.scale.set(1.35,.95,.9);scene.add(body);
-  // ерін
-  const lipM=std(0xc8475f,.34);const lipU=new T.Mesh(new T.BufferGeometry(),lipM),lipL=new T.Mesh(new T.BufferGeometry(),lipM);head.add(lipU,lipL);
-  // тістер
-  const toothG=(()=>{const s=new T.Shape(),w=.031,h=.05,r=.014;s.moveTo(-w+r,-h);s.lineTo(w-r,-h);s.quadraticCurveTo(w,-h,w,-h+r);s.lineTo(w,h-r);s.quadraticCurveTo(w,h,w-r,h);s.lineTo(-w+r,h);s.quadraticCurveTo(-w,h,-w,h-r);s.lineTo(-w,-h+r);s.quadraticCurveTo(-w,-h,-w+r,-h);
-    const g=new T.ExtrudeGeometry(s,{depth:.03,bevelEnabled:true,bevelSize:.008,bevelThickness:.008,bevelSegments:3,curveSegments:6});g.translate(0,0,-.015);return g;})();
-  const toothM=std(0xfffdf6,.18);const upper=new T.Group(),lower=new T.Group();head.add(upper,lower);
-  for(let i=0;i<10;i++){const x=(i-4.5)*.07,z=.862-.75*x*x,ry=-x*1.5;[upper,lower].forEach((g,k)=>{const t=new T.Mesh(toothG,toothM);t.position.set(x,0,z-(k?.02:0));t.rotation.y=ry;if(Math.abs(i-4.5)<1.2&&!k)t.scale.set(1.12,1.1,1);g.add(t);});}
-  upper.position.y=MY+.012;
-  // тіл: орталық сызық бойына созылған эллипс қималы бет
-  const NS=30,NT=18,tg=new T.BufferGeometry(),tpos=new Float32Array((NS+1)*NT*3),tidx=[];
-  for(let i=0;i<NS;i++)for(let j=0;j<NT;j++){const a=i*NT+j,b=i*NT+(j+1)%NT,c=a+NT,d=b+NT;tidx.push(a,c,b,b,c,d);}
-  tg.setAttribute('position',new T.BufferAttribute(tpos,3));tg.setIndex(tidx);
-  const tongue=new T.Mesh(tg,new T.MeshStandardMaterial({color:0xff7d95,roughness:.33,emissive:0x40101a,emissiveIntensity:.3}));head.add(tongue);
-  const P={jaw:0,lipU:.02,lipL:.02,wide:0,prot:0,out:0,tx:0,ty:0,arch:0,flat:.5,cup:0},Z={...P};let target={...P};
-  const zs=(x,y)=>Math.sqrt(Math.max(.01,1-x*x-y*y));
-  function lip(mesh,sign,w,h,prot){const pts=[];for(let i=0;i<=24;i++){const u=-1+i/12,x=u*w*1.04,y=MY+sign*h*(1-u*u)+sign*.012*(1-u*u);pts.push(new T.Vector3(x,y,zs(x,y)+.012+prot*.1*(1-u*u*.6)));}
-    mesh.geometry.dispose();mesh.geometry=new T.TubeGeometry(new T.CatmullRomCurve3(pts),40,.034+prot*.012+(sign<0?.008:0),10,false);}
-  function shape(){const w=P.wide>=0?.36*(1+.2*P.wide):.36*(1+.62*P.wide),lu=P.lipU,ll=P.lipL+P.jaw*.42;
-    U.uW.value=w;U.uLU.value=lu;U.uLL.value=ll;lip(lipU,1,w,lu,P.prot);lip(lipL,-1,w,ll,P.prot);
-    lower.position.y=MY-.092-P.jaw*.36;lower.position.z=zs(0,lower.position.y-.05)-.925-.035;
-    // тілдің орталық сызығы: түбі — ортасы — ұшы (Безье)
-    const base=MY-P.jaw*.34,r=[0,MY-.1-P.jaw*.34,.3],tip=[P.tx*.31,base+(P.ty>=0?P.ty*.24:P.ty*.06),.78+P.out*.5-Math.max(0,-P.ty)*.13],
-      mid=[P.tx*.1,(base+.03)*(1-P.arch)+(MY+.13)*P.arch,(r[2]+tip[2])/2+P.arch*.06];
-    const a0=.095+.135*P.flat,b0=.07-.03*P.flat,sharp=1-P.flat;
-    for(let i=0;i<=NS;i++){const s=i/NS,q=1-s,c=[0,1,2].map(k=>q*q*r[k]+2*q*s*mid[k]+s*s*tip[k]),d=[0,1,2].map(k=>2*q*(mid[k]-r[k])+2*s*(tip[k]-mid[k]));
-      let ny=d[2],nz=-d[1];const nl=Math.hypot(ny,nz)||1;ny/=nl;nz/=nl;if(ny<0){ny=-ny;nz=-nz;}
-      const e=s>.72?Math.sqrt(Math.max(0,1-Math.pow((s-.72)/.28,2))):1,taper=(.72+.28*Math.sin(Math.PI*Math.min(1,s*1.15)))*e*(1-sharp*.45*s),a=a0*taper,b=b0*(.8+.2*q)*Math.max(e,.02);
-      for(let j=0;j<NT;j++){const th=j/NT*Math.PI*2,cx=Math.cos(th),sn=Math.sin(th),lift=P.cup*a*.95*cx*cx*Math.min(1,s*2.2),o=(i*NT+j)*3;
-        tpos[o]=c[0]+a*cx;tpos[o+1]=c[1]+(b*sn+lift)*ny;tpos[o+2]=c[2]+(b*sn+lift)*nz;}}
-    tg.attributes.position.needsUpdate=true;tg.computeVertexNormals();}
-  let rotY=0,rotX=0,tRotY=0,tRotX=0,zoom=.3,tZoom=.3,drag=null,alive=true,last=performance.now(),clock=0,pose=null,blink=2;
-  canvas.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY,tRotY,tRotX];canvas.setPointerCapture(e.pointerId);});
-  canvas.addEventListener('pointermove',e=>{if(!drag)return;tRotY=Math.max(-1.1,Math.min(1.1,drag[2]+(e.clientX-drag[0])*.008));tRotX=Math.max(-.35,Math.min(.35,drag[3]+(e.clientY-drag[1])*.006));});
-  ['pointerup','pointercancel'].forEach(n=>canvas.addEventListener(n,()=>drag=null));
-  function size(){const w=canvas.clientWidth||600,h=canvas.clientHeight||400;renderer.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();}
-  const ro=window.ResizeObserver?new ResizeObserver(size):null;if(ro)ro.observe(canvas);size();
-  function frame(now){if(!alive)return;if(!canvas.isConnected){api.dispose();return;}const dt=Math.min(.05,(now-last)/1000);last=now;clock+=dt;
-    if(pose)target=Object.assign({...Z},pose(clock));const k=1-Math.exp(-dt*11);for(const n in P)P[n]+=(target[n]-P[n])*k;shape();
-    rotY+=(tRotY-rotY)*k;rotX+=(tRotX-rotX)*k;zoom+=(tZoom-zoom)*k;head.rotation.set(rotX+Math.sin(clock*.7)*.012,rotY+Math.sin(clock*.5)*.02,0);
-    blink-=dt;const bs=blink<0?Math.max(.1,Math.abs(blink+.09)/.09):1;if(blink<-.18)blink=2.5+Math.random()*2.5;eyes.forEach(g=>g.scale.y=Math.min(1,bs));
-    const dist=5.7-zoom*2.6;cam.position.set(0,-.05-zoom*.3,dist);cam.lookAt(0,-.08-zoom*.32,0);renderer.render(scene,cam);requestAnimationFrame(frame);}
-  const api={setPose(f){pose=f;clock=0;},resetClock(){clock=0;},view(y){tRotY=y;tRotX=0;},zoom(z){tZoom=z;},render(){frame(performance.now());},
-    dispose(){alive=false;if(ro)ro.disconnect();try{renderer.dispose();scene.traverse(o=>{if(o.geometry)o.geometry.dispose();});}catch(e){}}};
-  requestAnimationFrame(frame);return api;}
-
-/* ---------- Бет ---------- */
-function artic3dPage(){
-  const names=k=>ARTIC[k].n.replace(/[«»]/g,'');let cur=A3_PENDING&&A3_EX[A3_PENDING]?A3_PENDING:'kurek',scene3=null,runTok=0,running=false;A3_PENDING=null;
-  const canvas=el('canvas',{class:'a3canvas','aria-label':'Артикуляциялық жаттығуды көрсететін 3D кейіпкер'});
-  const cap=el('p',{class:'a3cap','aria-live':'polite'},''),count=el('div',{class:'a3count'},''),title=el('h2',null,''),desc=el('p',null,'');
-  const startBtn=el('button',{class:'btn',type:'button',onclick(){running?stop():run();}},'▶ Диктормен бастау');
-  const note=el('p',{class:'hint'},'');
-  const list=el('div',{class:'a3list',role:'list'},A3_ORDER.map(k=>el('button',{type:'button','data-k':k,onclick(){pick3(k);}},names(k))));
-  const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-  function pick3(k){stop();cur=k;[...list.children].forEach(b=>b.classList.toggle('on',b.dataset.k===k));title.textContent=ARTIC[k].n;desc.textContent=ARTIC[k].d;cap.textContent='';count.textContent='';if(scene3)scene3.setPose(A3_EX[k].pose);}
-  function stop(){runTok++;running=false;A3V.stop();startBtn.textContent='▶ Диктормен бастау';count.textContent='';}
-  async function run(){const my=++runTok,ex=A3_EX[cur],ok=()=>my===runTok&&canvas.isConnected;running=true;startBtn.textContent='■ Тоқтату';
-    if(scene3)scene3.setPose(()=>({}));cap.textContent=ARTIC[cur].n+'. '+ex.say;await A3V.say(cur,ARTIC[cur].n.replace(/[«»]/g,'')+' жаттығуы. '+ex.say);if(!ok())return;
-    if(scene3)scene3.setPose(ex.pose);cap.textContent=ex.hold?'Бес санағанша ұстап тұр.':'Бес рет қайтала.';await sleep(500);
-    for(let i=0;i<5;i++){if(!ok())return;count.textContent=String(i+1);tone(true);const t0=Date.now();await A3V.say('n'+(i+1),A3_NUM[i]);if(!ok())return;const need=(ex.hold?1100:(ex.per||2)*1000)-(Date.now()-t0);if(need>0)await sleep(need);}
-    if(!ok())return;count.textContent='★';cap.textContent='Жарайсың! Енді демал.';if(scene3)scene3.setPose(()=>({wide:.7,lipU:.05,lipL:.1}));await A3V.say('praise','Жарайсың! Енді демал.');if(!ok())return;
-    running=false;startBtn.textContent='▶ Тағы бір рет';count.textContent='';if(scene3)scene3.setPose(ex.pose);}
-  const stage=el('div',{class:'a3stage'},canvas,count,el('div',{class:'a3views'},
-    el('button',{class:'btn ghost',type:'button',onclick(){scene3&&scene3.view(0);}},'Алдынан'),
-    el('button',{class:'btn ghost',type:'button',onclick(){scene3&&scene3.view(.85);}},'Қырынан'),
-    (()=>{let z=0;const b=el('button',{class:'btn ghost',type:'button',onclick(){z=z?0:1;scene3&&scene3.zoom(z?1:.3);b.textContent=z?'Алыстату':'Жақындату';}},'Жақындату');return b;})()));
-  const fail=el('p',{class:'hint'},'');
-  a3LoadThree().then(()=>{if(!canvas.isConnected)return;try{scene3=a3Scene(canvas);scene3.setPose(A3_EX[cur].pose);}catch(e){fail.textContent='Бұл құрылғыда 3D көрініс ашылмады. Жаттығудың сипаттамасын оқып орындаңыз.';}
-    const upd=()=>{note.textContent=A3_AUDIO.length?'Диктор дауысы: Айгерім.':A3V.kk()?'Диктор: браузердің қазақша дауысы.':'Бұл браузерде қазақша дауыс табылмады, сондықтан диктор мәтіні экранда көрсетіледі. Дауыспен тыңдау үшін сайтты Microsoft Edge браузерінде ашыңыз.';};upd();try{speechSynthesis.addEventListener('voiceschanged',upd);}catch(e){}
-  }).catch(()=>{fail.textContent='3D кітапханасы жүктелмеді. Интернет байланысын тексеріп, бетті жаңартыңыз.';});
-  setTimeout(()=>pick3(cur));
-  return [el('section',{class:'sheet a3'},el('div',{class:'a3grid'},
-      el('div',{class:'a3left'},stage,el('p',{class:'hint'},'Кейіпкерді саусақпен немесе тінтуірмен бұрып, жан-жағынан қарауға болады.'),fail),
-      el('div',{class:'a3right'},title,desc,cap,el('div',{class:'row'},startBtn),note,el('h3',null,'Жаттығуды таңда'),list))),
-    plain('Қалай жұмыс істейміз',ul(['Бала айнаның алдында отырады, экрандағы кейіпкерге қарап, қимылды қайталайды.','Алдымен жаттығуды диктормен бірге тыңдаңыз, сосын бес рет қайталаңыз немесе бес санағанша ұстап тұрыңыз.','«Қырынан» және «Жақындату» батырмалары тіл мен еріннің қалпын анық көрсетеді.','Күніне 5–7 жаттығу жеткілікті. Бала шаршаса, үзіліс жасаңыз.']))];
-}
 /* ===== Баланың даму картасы: прогресті шкала бойынша бақылау =====
    Деректер тек осы құрылғыдағы браузерде (localStorage) сақталады, ешқайда жіберілмейді. */
 const PG_AREAS=[
@@ -952,7 +809,7 @@ function plain(title,...kids){return el('section',{class:'sheet'},title&&el('h2'
 function ul(items){return el('ul',null,items.map(i=>el('li',null,i)));}
 
 function exCard(x,secs,key){const t=el('span',{class:'timer'},'');let id;const b=el('button',{class:'btn ghost',type:'button',onclick(){clearInterval(id);let s=secs;t.textContent=s;id=setInterval(()=>{s--;t.textContent=s>0?s:'Болды!';if(s<=0){clearInterval(id);tone(true);}},1000);}},secs+' секунд сана');
-  return el('div',{class:'ex'},el('h3',null,x.n),el('p',null,x.d),el('div',{class:'row'},b,key&&A3_EX[key]&&el('a',{class:'btn',href:'#artik3d',onclick(){A3_PENDING=key;}},'3D-де көру'),t));}
+  return el('div',{class:'ex'},el('h3',null,x.n),el('p',null,x.d),el('div',{class:'row'},b,key&&AV_FILES.includes(key)&&el('a',{class:'btn',href:'#artik',onclick(){AV_PENDING=key;}},'▶ Бейнесін көру'),t));}
 function articBlock(keys){return sheet('Артикуляциялық жаттығу',el('p',{class:'hint'},'Айнаның алдында отырып орындаймыз. Әр жаттығуды 3–5 рет қайтала.'),el('div',{class:'ex-grid'},keys.map(k=>exCard(ARTIC[k],10,k))));}
 function breathBlock(key){const x=BREATH[key];const lung=el('div',{class:'lung'});const lab=el('b',null,'');let ids=[];
   const b=el('button',{class:'btn ghost',type:'button',onclick(){ids.forEach(clearTimeout);ids=[];lung.classList.remove('go');void lung.offsetWidth;lung.classList.add('go');for(let i=0;i<3;i++){ids.push(setTimeout(()=>lab.textContent='Мұрынмен дем ал…',i*10000));ids.push(setTimeout(()=>lab.textContent='Ауызбен баяу шығар…',i*10000+4000));}ids.push(setTimeout(()=>lab.textContent='Жарайсың!',30000));}},'Бастау');
@@ -1017,15 +874,24 @@ function voiceGame(){return game('Дауыс өлшегіш','Дыбысты т�
     loop();}},'Микрофонды қосу');
   g.body.append(faces,big,tank,el('div',{class:'row',style:'justify-content:center'},startBtn,hold),note);});}
 
+/* ===== Артикуляциялық жаттығулар: бейнелер ===== */
+const AV_FILES=['dual','tutik','ine','kurek','sagat','atken','tosap','sanyr'];
+let AV_PENDING=null;
+function articVideoPage(){const pend=AV_PENDING;AV_PENDING=null;const base=(window.SB_TEMPLATE?'../':'');
+  const cards=AV_FILES.map(k=>{const x=ARTIC[k];const v=el('video',{src:base+'video/artic/'+k+'.mp4',poster:base+'video/artic/'+k+'.jpg',controls:true,preload:'none',playsinline:true,loop:true});
+    return el('figure',{class:'av',id:'av-'+k},v,el('figcaption',null,el('h3',null,x.n),el('p',null,x.d),el('div',{class:'row'},el('button',{class:'btn ghost',type:'button',onclick(){document.querySelectorAll('.av video').forEach(o=>{if(o!==v)o.pause();});v.currentTime=0;v.play().catch(()=>{});}},'▶ Қайта көру'))));});
+  if(pend)setTimeout(()=>{const c=document.getElementById('av-'+pend);if(c){c.scrollIntoView({block:'center'});c.classList.add('hl');}},80);
+  return [plain('Қалай жаттығамыз',ul(['Бейнені бірге көріп, кейіпкердің қимылын айнаның алдында қайталаңыз.','Әр жаттығуды 3–5 рет орындаңыз, қалыпты 5 санағанша ұстап тұрыңыз.','Күніне 5–7 жаттығу жеткілікті. Бала шаршаса, үзіліс жасаңыз.','Қимыл түсініксіз болса, көп қайталатпай, логопедтен нақтылаңыз.'])),
+    el('section',{class:'sheet avs'},el('div',{class:'avgrid'},cards))];}
 /* ===== Беттер ===== */
-const GROUPS=[['Таныстыру',['home','kirispe','piramida','ozim']],['Лексикалық тақырыптар',['dene','uy-zhanuarlary','zhemister','kokonister','ydystar','kiimder']],['Жыл мезгілдері',['zhaz','kuz','qys','koktem']],['Дыбыс, түс, қимыл',['tuster','artik3d','dybystar','neiro']],['Ұғымдар',['antonimder','kop-az','ulken-kishi']],['Қосымшалар',['sozdik-1','sozdik-2','buyndar']],['Педагог пен ата-ана',['damu','ata-analarga','galereya','pikirler']]];
+const GROUPS=[['Таныстыру',['home','kirispe','piramida','ozim']],['Лексикалық тақырыптар',['dene','uy-zhanuarlary','zhemister','kokonister','ydystar','kiimder']],['Жыл мезгілдері',['zhaz','kuz','qys','koktem']],['Дыбыс, түс, қимыл',['tuster','artik','dybystar','neiro']],['Ұғымдар',['antonimder','kop-az','ulken-kishi']],['Қосымшалар',['sozdik-1','sozdik-2','buyndar']],['Педагог пен ата-ана',['damu','ata-analarga','galereya','pikirler']]];
 const PAGES={
  home:{title:'Бастапқы бет',icon:'🏠'},
  kirispe:{title:'Кіріспе',icon:'📘',lead:'Бұл жинақ кімге арналған және онымен қалай жұмыс істеу керек.'},
  piramida:{title:'Вильямс және Шелленбергер пирамидасы арқылы түзету жұмыстары',short:'Вильямс және Шелленбергер пирамидасы',icon:'🔺',lead:'Сөйлеу тілі баланың сенсорлық және қимыл дамуының үстіне құрылады. Сондықтан түзету жұмысын пирамиданың табанынан бастаймыз.'},
  ozim:{title:'Өзім туралы',icon:'👩‍🏫',lead:'Сайт авторы туралы мәлімет.'},
  tuster:{title:'Түстер әлемі',icon:'🎨',lead:'Түстерді танимыз, атаймыз және заттарды түсіне қарай топтаймыз.'},
- artik3d:{title:'3D артикуляциялық жаттығулар',short:'3D артикуляция',icon:'👄',lead:'Кейіпкер тіл, ерін және жақ қимылын көрсетеді, диктор түсіндіреді. Қарап отырып бірге қайталаймыз.'},
+ artik:{title:'Артикуляциялық жаттығулар',short:'Артикуляциялық жаттығулар',icon:'👄',lead:'Кейіпкер жаттығуды көрсетеді, бала экранға қарап бірге қайталайды. Айнаның алдында отырып орындаған дұрыс.'},
  dybystar:{title:'Дыбыстар бойынша тапсырмалар',icon:'🔤',lead:'Қойылған дыбысты сегіз кезеңмен бекітеміз: жеке дыбыс, ашық буын, тұйық буын, сөздің басы, ортасы, соңы, сөйлем, мәтін.'},
  neiro:{title:'Нейрожаттығулар',short:'Нейро жаттығулар',icon:'🧠',lead:'Қимылды жоспарлау, жұмыс жады және екі жарты шардың өзара байланысын дамытатын жаттығулар.'},
  antonimder:{title:'Антонимдер',icon:'↔️',lead:'Мағынасы қарама-қарсы сөздерді табамыз және сөйлемде қолданамыз.'},
@@ -1108,7 +974,7 @@ function ozimTpl(){const shown=PFIELDS.filter(([k])=>PROF[k]&&k!=='wa');const ms
 function topicPage(k){const T=TOPICS[k];return [articBlock(T.artic),breathBlock(T.breath),cardsBlock('Суретке қарап ата',T.items),revealBlock(T.items),
   findGame(T.askTitle||'Сұраққа суретпен жауап бер','Сұрақты тыңда да, дұрыс суретті көрсет.',T.ask),qaBlock(T.qa),chantBlock(T.chant),
   findGame('Көрсет','Аталған суретті тауып бас.',T.items,w=>'«'+cap(w)+'» қайда?'),nameGame(T.items),shadowGame(T.items),memoryGame(T.items),T.sort&&sortGame(T.sort.title,T.sort.bins)];}
-R.artik3d=artic3dPage;R.damu=progressPage;
+R.artik=articVideoPage;R.damu=progressPage;
 if(TPL){R.home=homeTpl;R.ozim=ozimTpl;}
 Object.keys(TOPICS).forEach(k=>R[k]=()=>topicPage(k));
 function seasonPage(k){const S=SEASONS[k];const all=SEASON_KEYS.flatMap(s=>SEASONS[s].signs.map(x=>[x[0],x[1],s]));
